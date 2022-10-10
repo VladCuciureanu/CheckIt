@@ -27,7 +27,7 @@ export default function HomePage() {
         }}
       />
       {todoItems
-        .sort((a, b) => Number(b.checked) - Number(a.checked))
+        .sort((a, b) => Number(a.checked) - Number(b.checked))
         .map((item) => (
           <Todo
             key={item.id}
