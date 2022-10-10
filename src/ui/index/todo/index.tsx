@@ -1,20 +1,16 @@
-import StorageService from "@/libs/storage"
 import { TodoItem } from "@/types/todo-item"
-import { useRef, useState } from "react"
+import { MouseEventHandler, useState } from "react"
 import styled from "styled-components"
 
-export default function Todo({
-  dto,
-  handleToggle,
-}: {
+type TodoProps = {
   dto: TodoItem
-  handleToggle: Function
-}) {
-  const [checked, setChecked] = useState(dto.checked)
+  onClick?: MouseEventHandler<HTMLDivElement>
+}
 
+export default function Todo({ dto, onClick }: TodoProps) {
   return (
-    <Container onClick={() => handleToggle()}>
-      <Checkbox className={checked ? "checked" : ""} />
+    <Container onClick={onClick}>
+      <Checkbox className={dto.checked ? "checked" : ""} />
       <Label>{dto.label}</Label>
     </Container>
   )

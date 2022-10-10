@@ -1,26 +1,20 @@
-import StorageService from "@/libs/storage"
-import { FormEvent, useState } from "react"
+import { ChangeEventHandler, FormEventHandler } from "react"
 import styled from "styled-components"
 
-export default function TodoInputBox() {
-  const [newLabel, setNewLabel] = useState<string>("")
-  const handleInput = (event: FormEvent) => {
-    event.preventDefault()
-    if (newLabel.length < 1) {
-      return
-    }
-    StorageService.addItem({ label: newLabel, checked: false })
-    window.dispatchEvent(new Event("storage"))
-    setNewLabel("")
-  }
+type InputBoxProps = {
+  value?: string | number | readonly string[]
+  onChange?: ChangeEventHandler<HTMLInputElement>
+  onSubmit?: FormEventHandler<HTMLFormElement>
+}
 
+export default function TodoInputBox(props: InputBoxProps) {
   return (
-    <form onSubmit={(event) => handleInput(event)}>
+    <form onSubmit={props.onSubmit}>
       <StyledInput
         type="text"
         placeholder="What are you thinking of?"
-        value={newLabel}
-        onChange={(event) => setNewLabel(event.target.value)}
+        value={props.value}
+        onChange={props.onChange}
       />
     </form>
   )

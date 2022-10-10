@@ -1,31 +1,46 @@
-import Todo from "@/ui/index/todo"
 import { TodoItem } from "@/types/todo-item"
-import { useEffect, useState } from "react"
-import StorageService from "../libs/storage"
+import { useState } from "react"
+import { v4 as uuidV4 } from "uuid"
 import Layout from "@/ui/shared/layout"
 import TodoInputBox from "@/ui/index/input"
+import useLocalStorage from "@/hooks/use-local-storage"
+import Todo from "@/ui/index/todo"
 
 export default function HomePage() {
-  const [todoItems, setTodoItems] = useState<TodoItem[]>([])
-  const [newItemLabel, setNewItemLabel] = useState("")
-
-  useEffect(() => {
-    window.addEventListener("storage", () => {
-      setTodoItems(StorageService.getItems())
-    })
-
-    window.dispatchEvent(new Event("storage"))
-  }, [])
-
-  const handleToggle = () => {}
+  const [todoItems, setTodoItems] = useLocalStorage<TodoItem[]>(
+    "CHECK_IT_STORAGE",
+    [],
+  )
+  const [inputValue, setInputValue] = useState("")
 
   return (
     <Layout>
-      <TodoInputBox />
-      {(todoItems as TodoItem[])
-        .sort((a, b) => (a.checked ? 1 : 0) - (b.checked ? 1 : 0))
-        .map((item: TodoItem, index: number) => (
-          <Todo key={index} dto={item} handleToggle={() => handleToggle()} />
+      <TodoInputBox
+        value={inputValue}
+        onChange={(event) => setInputValue(event.target.value)}
+        onSubmit={(event) => {
+          setTodoItems([
+            ...todoItems,
+            { id: uuidV4(), label: inputValue, checked: false },
+          ])
+          event.preventDefault()
+        }}
+      />
+      {todoItems
+        .sort((a, b) => Number(b.checked) - Number(a.checked))
+        .map((item) => (
+          <Todo
+            key={item.id}
+            dto={item}
+            onClick={() => {
+              const checkedItem = item
+              checkedItem.checked = !checkedItem.checked
+              setTodoItems([
+                checkedItem,
+                ...todoItems.filter((it) => it !== item),
+              ])
+            }}
+          />
         ))}
     </Layout>
   )
