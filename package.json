@@ -6,6 +6,7 @@
     "email": "dev@vladinski.md",
     "url": "https://vladinski.md"
   },
+  "license": "MIT",
   "private": true,
   "scripts": {
     "dev": "next dev",

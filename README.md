@@ -1,6 +1,6 @@
 # CheckIt
 
-[![Build Status - Cirrus][]][Build status] [![Twitter handle][]][Twitter badge]
+<!-- [![Build Status - Cirrus][]][Build status] -->[![Twitter handle][]][Twitter badge]
 
 <img align="right" src="public/assets/graphics/logo.svg" height="150px" alt="TBA">
 
