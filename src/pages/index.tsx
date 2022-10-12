@@ -23,6 +23,7 @@ export default function HomePage() {
             ...todoItems,
             { id: uuidV4(), label: inputValue, checked: false },
           ])
+          setInputValue("")
           event.preventDefault()
         }}
       />
