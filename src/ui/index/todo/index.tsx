@@ -2,7 +2,7 @@ import { TodoItem } from "@/types/todo-item"
 import { motion } from "framer-motion"
 import { MouseEventHandler } from "react"
 import styled from "styled-components"
-import Squircle from "./squircle"
+import Squircle from "../../shared/graphics/squircle"
 
 type TodoProps = {
   dto: TodoItem
