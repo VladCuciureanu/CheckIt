@@ -1,20 +1,16 @@
-import { TodoItem } from "@/types/todo-item"
 import { useState } from "react"
 import { v4 as uuidV4 } from "uuid"
 import Layout from "@/ui/shared/layout"
 import TodoInputBox from "@/ui/index/input"
-import useLocalStorage from "@/hooks/use-local-storage"
 import Todo from "@/ui/index/todo"
 import Slider from "@/ui/index/slider"
 import styled from "styled-components"
+import useStorage from "@/hooks/use-storage"
 
 export default function HomePage() {
   const [inputValue, setInputValue] = useState("")
   const [hoveredElement, setHoveredElement] = useState<any | undefined>()
-  const [todoItems, setTodoItems] = useLocalStorage<TodoItem[]>(
-    "CHECK_IT_STORAGE",
-    [],
-  )
+  const [todoItems, setTodoItems] = useStorage()
 
   return (
     <Layout>
