@@ -49,6 +49,9 @@ export default function HomePage() {
             }}
             onMouseEnter={(event) => setHoveredElement(event)}
             onMouseLeave={() => setHoveredElement(undefined)}
+            onDelete={() =>
+              setTodoItems([...todoItems.filter((it) => it !== item)])
+            }
           />
         ))}
       <Slider hoveredElement={hoveredElement} />

@@ -1,4 +1,10 @@
 import { TodoItem } from "@/types/todo-item"
+import {
+  ContextMenu,
+  ContextMenuTrigger,
+  ContextMenuContent,
+  ContextMenuItem,
+} from "@radix-ui/react-context-menu"
 import { motion } from "framer-motion"
 import { MouseEventHandler } from "react"
 import styled from "styled-components"
@@ -9,6 +15,7 @@ type TodoProps = {
   onClick?: MouseEventHandler<HTMLDivElement>
   onMouseEnter?: MouseEventHandler<HTMLDivElement>
   onMouseLeave?: MouseEventHandler<HTMLDivElement>
+  onDelete?: () => void
 }
 
 export default function Todo({
@@ -16,17 +23,27 @@ export default function Todo({
   onClick,
   onMouseEnter,
   onMouseLeave,
+  onDelete,
 }: TodoProps) {
   return (
-    <Container
-      onClick={onClick}
-      className={dto.checked ? "checked" : ""}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-    >
-      <Checkbox />
-      <Label>{dto.label}</Label>
-    </Container>
+    <ContextMenu>
+      <ContextMenuTrigger>
+        <Container
+          onClick={onClick}
+          className={dto.checked ? "checked" : ""}
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+        >
+          <Checkbox />
+          <Label>{dto.label}</Label>
+        </Container>
+      </ContextMenuTrigger>
+      <StyledContextMenuContent>
+        <DeleteContextMenuItem onClick={() => onDelete()}>
+          Delete
+        </DeleteContextMenuItem>
+      </StyledContextMenuContent>
+    </ContextMenu>
   )
 }
 
@@ -88,4 +105,25 @@ const Label = styled.p`
     transform-origin: center right;
     transition: transform 0.5s cubic-bezier(0.55, 0, 0.1, 1);
   }
+`
+
+const DeleteContextMenuItem = styled(ContextMenuItem)`
+  color: rgb(var(--colors-red-9));
+  padding: 0.35rem;
+  border: 0;
+  border-radius: 0.25rem;
+  box-sizing: border-box;
+  &:hover {
+    background-color: rgba(var(--colors-highContrast), 0.25);
+    cursor: pointer;
+  }
+`
+
+const StyledContextMenuContent = styled(ContextMenuContent)`
+  background-color: rgb(var(--colors-lowContrast));
+  padding: 0.4rem;
+  border: 0;
+  border-radius: 0.5rem;
+  box-sizing: border-box;
+  z-index: 10;
 `
