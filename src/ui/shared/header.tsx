@@ -22,5 +22,5 @@ const Logo = styled(UnstyledLogo)`
   height: 32px;
   width: 32px;
   max-height: 32px;
-  fill: red;
+  fill: rgb(var(--colors-lowContrast));
 `

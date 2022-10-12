@@ -7,11 +7,11 @@ import useLocalStorage from "@/hooks/use-local-storage"
 import Todo from "@/ui/index/todo"
 
 export default function HomePage() {
+  const [inputValue, setInputValue] = useState("")
   const [todoItems, setTodoItems] = useLocalStorage<TodoItem[]>(
     "CHECK_IT_STORAGE",
     [],
   )
-  const [inputValue, setInputValue] = useState("")
 
   return (
     <Layout>

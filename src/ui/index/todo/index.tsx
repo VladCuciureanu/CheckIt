@@ -7,11 +7,23 @@ import Squircle from "./squircle"
 type TodoProps = {
   dto: TodoItem
   onClick?: MouseEventHandler<HTMLDivElement>
+  onMouseEnter?: MouseEventHandler<HTMLDivElement>
+  onMouseLeave?: MouseEventHandler<HTMLDivElement>
 }
 
-export default function Todo({ dto, onClick }: TodoProps) {
+export default function Todo({
+  dto,
+  onClick,
+  onMouseEnter,
+  onMouseLeave,
+}: TodoProps) {
   return (
-    <Container onClick={onClick} className={dto.checked ? "checked" : ""}>
+    <Container
+      onClick={onClick}
+      className={dto.checked ? "checked" : ""}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <Checkbox />
       <Label>{dto.label}</Label>
     </Container>
@@ -23,28 +35,24 @@ const Container = styled(motion.div)`
   flex-direction: row;
   align-items: center;
   gap: 0.35rem;
-  margin-bottom: 0.25rem;
-  padding: 0.5rem;
+  padding: 0 4px;
+  margin-left: -4px;
+  margin-right: -4px;
+  margin-top: 8px;
   border-radius: 0.5rem;
-  transition: background-color 0.15s ease;
-
-  &:hover {
-    background-color: #222;
-  }
-
-  &:active {
-    background-color: #333;
-  }
 
   &.checked {
     svg {
-      opacity: 0.5;
+      opacity: 1;
       #fill {
-        fill: white;
+        fill: rgb(var(--colors-lowContrast));
+      }
+      #outline {
+        fill: rgb(var(--colors-lowContrast));
       }
     }
     p {
-      color: gray;
+      color: rgb(var(--colors-lowContrast));
       &:after {
         transform-origin: center left;
         transform: scaleX(1);
@@ -54,8 +62,8 @@ const Container = styled(motion.div)`
 `
 
 const Checkbox = styled(Squircle)`
-  fill: white;
-  opacity: 0.85;
+  fill: rgb(var(--colors-highContrast));
+  opacity: 0.8;
   max-width: 1.5rem;
   max-height: 1.5rem;
   #fill {
@@ -70,7 +78,7 @@ const Label = styled.p`
   position: relative;
   &:after {
     content: "";
-    background: gray;
+    background: rgb(var(--colors-lowContrast));
     position: absolute;
     display: block;
     width: 100%;

@@ -1,15 +1,21 @@
-import { ChangeEventHandler, FormEventHandler } from "react"
+import { ChangeEventHandler, FormEventHandler, MouseEventHandler } from "react"
 import styled from "styled-components"
 
 type InputBoxProps = {
   value?: string | number | readonly string[]
   onChange?: ChangeEventHandler<HTMLInputElement>
   onSubmit?: FormEventHandler<HTMLFormElement>
+  onMouseEnter?: MouseEventHandler<HTMLFormElement>
+  onMouseLeave?: MouseEventHandler<HTMLFormElement>
 }
 
 export default function TodoInputBox(props: InputBoxProps) {
   return (
-    <form onSubmit={props.onSubmit}>
+    <form
+      onSubmit={props.onSubmit}
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
+    >
       <StyledInput
         type="text"
         placeholder="What are you thinking of?"
@@ -26,7 +32,8 @@ const StyledInput = styled.input`
   width: 100%;
   padding: 0.85rem 1.25rem;
   font-size: 1rem;
-  font-weight: 300;
+  font-family: var(--fonts-body);
+  font-weight: 400;
   background: transparent;
   transition: all 0.5s ease;
   margin-left: -1.25rem;
@@ -38,7 +45,6 @@ const StyledInput = styled.input`
   }
 
   &:hover {
-    background: rgb(var(--colors-gray-4));
     ::placeholder {
       color: rgb(var(--colors-gray-10));
     }

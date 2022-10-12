@@ -15,6 +15,10 @@ const GlobalStyle = createGlobalStyle`
     ${darkTheme}
   }
 
+  * {
+    -webkit-font-smoothing: antialiased;
+  }
+
   body {
     color: rgb(var(--colors-highContrast));
     background-color: rgb(var(--colors-bg));
