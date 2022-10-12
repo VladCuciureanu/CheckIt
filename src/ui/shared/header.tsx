@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import UnstyledLogo from "./logo"
+import UnstyledLogo from "./graphics/logo"
 
 export default function Header() {
   return (
@@ -11,7 +11,7 @@ export default function Header() {
 
 const Container = styled.header`
   width: 100%;
-  height: 40px;
+  height: 100px;
   display: flex;
   justify-content: space-between;
   padding: 32px;
@@ -19,8 +19,7 @@ const Container = styled.header`
 `
 
 const Logo = styled(UnstyledLogo)`
-  height: 32px;
-  width: 32px;
-  max-height: 32px;
-  fill: rgb(var(--colors-lowContrast));
+  & {
+    fill: rgb(var(--colors-lowContrast));
+  }
 `
