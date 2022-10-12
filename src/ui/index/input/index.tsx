@@ -37,17 +37,17 @@ const StyledInput = styled.input`
   background: transparent;
   transition: all 0.5s ease;
   margin-left: -1.25rem;
-  margin-bottom: 2rem;
 
   ::placeholder {
     color: rgb(var(--colors-lowContrast));
     transition: color 0.5s ease;
-    text-align: center;
+    /* text-align: center; */
   }
 
   &:hover {
     ::placeholder {
       color: rgba(var(--colors-highContrast), 0.2);
+      text-align: left;
     }
   }
 

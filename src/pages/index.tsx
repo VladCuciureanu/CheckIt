@@ -6,6 +6,7 @@ import TodoInputBox from "@/ui/index/input"
 import useLocalStorage from "@/hooks/use-local-storage"
 import Todo from "@/ui/index/todo"
 import Slider from "@/ui/index/slider"
+import styled from "styled-components"
 
 export default function HomePage() {
   const [inputValue, setInputValue] = useState("")
@@ -31,6 +32,7 @@ export default function HomePage() {
         onMouseEnter={(event) => setHoveredElement(event)}
         onMouseLeave={() => setHoveredElement(undefined)}
       />
+      <Divider />
       {todoItems
         .sort((a, b) => Number(a.checked) - Number(b.checked))
         .map((item) => (
@@ -53,3 +55,11 @@ export default function HomePage() {
     </Layout>
   )
 }
+
+const Divider = styled.div`
+  min-height: 1px;
+  min-width: 100%;
+  background-color: rgba(var(--colors-lowContrast), 0.5);
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
+`
