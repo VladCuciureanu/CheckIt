@@ -40,13 +40,14 @@ const StyledInput = styled.input`
   margin-bottom: 2rem;
 
   ::placeholder {
-    color: rgb(var(--colors-gray-8));
+    color: rgb(var(--colors-lowContrast));
     transition: color 0.5s ease;
+    text-align: center;
   }
 
   &:hover {
     ::placeholder {
-      color: rgb(var(--colors-gray-10));
+      color: rgba(var(--colors-highContrast), 0.2);
     }
   }
 

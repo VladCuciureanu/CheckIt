@@ -75,6 +75,7 @@ const Label = styled.p`
   transition: color 0.3s ease;
   display: inline-block;
   position: relative;
+  font-weight: 400;
   &:after {
     content: "";
     background: rgb(var(--colors-lowContrast));
