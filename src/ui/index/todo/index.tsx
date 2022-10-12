@@ -35,11 +35,9 @@ const Container = styled(motion.div)`
   flex-direction: row;
   align-items: center;
   gap: 0.35rem;
-  padding: 0 4px;
-  margin-left: -4px;
-  margin-right: -4px;
-  margin-top: 8px;
+  padding: 0.35rem 0;
   border-radius: 0.5rem;
+  user-select: none;
 
   &.checked {
     svg {
@@ -66,6 +64,7 @@ const Checkbox = styled(Squircle)`
   opacity: 0.8;
   max-width: 1.5rem;
   max-height: 1.5rem;
+  margin-top: 0.05rem;
   #fill {
     fill: transparent;
   }

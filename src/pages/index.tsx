@@ -5,9 +5,11 @@ import Layout from "@/ui/shared/layout"
 import TodoInputBox from "@/ui/index/input"
 import useLocalStorage from "@/hooks/use-local-storage"
 import Todo from "@/ui/index/todo"
+import Slider from "@/ui/index/slider"
 
 export default function HomePage() {
   const [inputValue, setInputValue] = useState("")
+  const [hoveredElement, setHoveredElement] = useState<any | undefined>()
   const [todoItems, setTodoItems] = useLocalStorage<TodoItem[]>(
     "CHECK_IT_STORAGE",
     [],
@@ -26,6 +28,8 @@ export default function HomePage() {
           setInputValue("")
           event.preventDefault()
         }}
+        onMouseEnter={(event) => setHoveredElement(event)}
+        onMouseLeave={() => setHoveredElement(undefined)}
       />
       {todoItems
         .sort((a, b) => Number(a.checked) - Number(b.checked))
@@ -41,8 +45,11 @@ export default function HomePage() {
                 ...todoItems.filter((it) => it !== item),
               ])
             }}
+            onMouseEnter={(event) => setHoveredElement(event)}
+            onMouseLeave={() => setHoveredElement(undefined)}
           />
         ))}
+      <Slider hoveredElement={hoveredElement} />
     </Layout>
   )
 }
