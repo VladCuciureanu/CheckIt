@@ -68,10 +68,7 @@ const Container = styled(motion.div)`
     }
     p {
       color: rgb(var(--colors-lowContrast));
-      &:after {
-        transform-origin: center left;
-        transform: scaleX(1);
-      }
+      text-decoration-color: rgb(var(--colors-lowContrast));
     }
   }
 `
@@ -81,6 +78,8 @@ const Checkbox = styled(Squircle)`
   opacity: 0.8;
   max-width: 1.5rem;
   max-height: 1.5rem;
+  min-width: 1.5rem;
+  min-height: 1.5rem;
   margin-top: 0.05rem;
   #fill {
     fill: transparent;
@@ -93,18 +92,9 @@ const Label = styled.p`
   display: inline-block;
   position: relative;
   font-weight: 400;
-  &:after {
-    content: "";
-    background: rgb(var(--colors-lowContrast));
-    position: absolute;
-    display: block;
-    width: 100%;
-    height: 2px;
-    margin-top: -0.5em;
-    transform: scaleX(0);
-    transform-origin: center right;
-    transition: transform 0.5s cubic-bezier(0.55, 0, 0.1, 1);
-  }
+  text-decoration: line-through;
+  text-decoration-color: transparent;
+  transition: text-decoration-color 0.3s ease;
 `
 
 const DeleteContextMenuItem = styled(ContextMenuItem)`
