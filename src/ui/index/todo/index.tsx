@@ -15,7 +15,7 @@ type TodoProps = {
   onClick?: MouseEventHandler<HTMLDivElement>
   onMouseEnter?: MouseEventHandler<HTMLDivElement>
   onMouseLeave?: MouseEventHandler<HTMLDivElement>
-  onDelete?: () => void
+  onDelete: () => void
 }
 
 export default function Todo({
