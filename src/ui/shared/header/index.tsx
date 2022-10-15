@@ -1,6 +1,7 @@
 import Link from "next/link"
 import styled from "styled-components"
-import UnstyledLogo from "./graphics/logo"
+import UnstyledLogo from "../graphics/logo"
+import Menu from "./menu"
 
 export default function Header() {
   return (
@@ -10,6 +11,7 @@ export default function Header() {
           <Logo />
         </Anchor>
       </Link>
+      <Menu />
     </Container>
   )
 }
@@ -24,14 +26,14 @@ const Container = styled.header`
 `
 
 const Anchor = styled.a`
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
 `
 
 const Logo = styled(UnstyledLogo)`
   & {
     cursor: pointer;
-    fill: rgb(var(--colors-lowContrast));
+    fill: rgba(var(--colors-lowContrast), 0.5);
     transition: fill 0.3s ease;
     :hover {
       fill: rgb(var(--colors-highContrast));

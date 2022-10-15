@@ -58,7 +58,7 @@ const Container = styled(motion.div)`
 
   &.checked {
     svg {
-      opacity: 1;
+      opacity: 0.25;
       #fill {
         fill: rgb(var(--colors-lowContrast));
       }
@@ -67,8 +67,8 @@ const Container = styled(motion.div)`
       }
     }
     p {
-      color: rgb(var(--colors-lowContrast));
-      text-decoration-color: rgb(var(--colors-lowContrast));
+      color: rgba(var(--colors-lowContrast), 0.5);
+      text-decoration-color: rgba(var(--colors-lowContrast), 0.5);
     }
   }
 `

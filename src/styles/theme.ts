@@ -150,7 +150,7 @@ export const darkTheme = css`
   --colors-blue-11: ${convert(blueDark.blue11)};
   --colors-blue-12: ${convert(blueDark.blue12)};
   --colors-bg: 0, 0, 0;
-  --colors-lowContrast: var(--colors-gray-3);
+  --colors-lowContrast: var(--colors-gray-11);
   --colors-highContrast: var(--colors-gray-12);
 `
 

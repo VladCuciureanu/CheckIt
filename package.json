@@ -18,6 +18,7 @@
   "dependencies": {
     "@radix-ui/colors": "^0.1.8",
     "@radix-ui/react-context-menu": "^1.0.0",
+    "@radix-ui/react-dropdown-menu": "^1.0.0",
     "framer-motion": "^7.3.5",
     "next": "12.3.0",
     "next-seo": "^5.5.0",
