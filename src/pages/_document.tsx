@@ -40,7 +40,7 @@ export default class Document extends NextDocument {
     return (
       <Html lang="en">
         <Head>
-          <link rel="icon" href="/assets/graphics/favicon.ico" />
+          <link rel="icon" href="/graphics/favicon.ico" />
           <link rel="preconnect" href="https://fonts.googleapis.com" />
           <link
             rel="preconnect"

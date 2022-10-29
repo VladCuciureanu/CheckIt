@@ -4,7 +4,7 @@
 
 [![twitter handle][]][twitter badge]
 
-<img align="right" src="public/assets/graphics/logo.svg" height="150px" alt="A squared circle filled with wavy lines surrounded by a detached border">
+<img align="right" src="public/graphics/logo.svg" height="150px" alt="A squared circle filled with wavy lines surrounded by a detached border">
 
 **CheckIt** is a _minimalist_, _modern_ and _secure_ checklist app created for quickly writing down
 action points. This project was built using **Next.JS** and is deployed on **Vercel**.
