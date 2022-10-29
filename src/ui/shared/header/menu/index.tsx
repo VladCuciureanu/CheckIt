@@ -1,11 +1,36 @@
 import useStorage from "@/hooks/use-storage"
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
 import { useTheme } from "next-themes"
+import { useCallback, useEffect, useState } from "react"
 import styled from "styled-components"
 
 export default function HeaderMenu() {
   const { theme, setTheme } = useTheme()
   const [_, setStorage] = useStorage()
+  const [metaKeySymbol, setMetaKeySymbol] = useState("")
+
+  const toggleTheme = useCallback(
+    () => setTheme(theme === "light" ? "dark" : "light"),
+    [setTheme, theme],
+  )
+
+  const handleKeyPress = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "k" && event.metaKey) {
+        toggleTheme()
+      }
+    },
+    [toggleTheme],
+  )
+
+  useEffect(() => {
+    navigator.platform.includes("Mac")
+      ? setMetaKeySymbol("⌘")
+      : setMetaKeySymbol("Win")
+    document.addEventListener("keydown", handleKeyPress)
+    return () => document.removeEventListener("keydown", handleKeyPress)
+  }, [handleKeyPress])
+
   return (
     <DropdownMenu.Root>
       <Trigger>
@@ -25,8 +50,8 @@ export default function HeaderMenu() {
       </Trigger>
       <DropdownMenu.Portal>
         <Content align="end">
-          <Item onClick={() => setTheme(theme === "light" ? "dark" : "light")}>
-            Toggle Theme <RightSlot>T</RightSlot>
+          <Item onClick={() => toggleTheme()}>
+            Toggle Theme <RightSlot>{metaKeySymbol}+K</RightSlot>
           </Item>
           <DangerousItem
             onClick={() => {
@@ -53,11 +78,11 @@ const Trigger = styled(DropdownMenu.Trigger)`
   justify-content: center;
   svg {
     max-width: 24px;
-    color: rgba(var(--colors-lowContrast), 0.5);
+    color: hsla(var(--colors-lowContrast), 0.5);
     transition: color 0.3s ease;
   }
   &:hover {
-    background-color: rgba(var(--colors-lowContrast), 0.15);
+    background-color: hsla(var(--colors-lowContrast), 0.15);
     svg {
       color: hsl(var(--colors-highContrast));
     }
@@ -67,7 +92,7 @@ const Trigger = styled(DropdownMenu.Trigger)`
 const Content = styled(DropdownMenu.Content)`
   min-width: 220;
   background-color: hsl(var(--colors-bg));
-  border: 1px solid rgba(var(--colors-lowContrast), 0.5);
+  border: 1px solid hsla(var(--colors-lowContrast), 0.5);
   border-radius: 0.75rem;
   padding: 0.35rem;
 `
@@ -83,7 +108,7 @@ const Item = styled(DropdownMenu.Item)`
   font-size: 0.8rem;
   border-radius: 0.4rem;
   &:hover {
-    background-color: rgba(var(--colors-lowContrast), 0.175);
+    background-color: hsla(var(--colors-lowContrast), 0.175);
   }
 `
 
@@ -97,8 +122,8 @@ const RightSlot = styled.div`
   border-radius: 0.3rem;
   margin-top: -3px;
   margin-bottom: -3px;
-  background-color: rgba(var(--colors-lowContrast), 0.21);
-  color: rgba(var(--colors-lowContrast), 0.8);
+  background-color: hsla(var(--colors-lowContrast), 0.21);
+  color: hsla(var(--colors-lowContrast), 0.8);
   [data-highlighted] > & {
     color: "white";
   }
