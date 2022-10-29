@@ -17,8 +17,8 @@ export const cssVariables = css`
   --radii-2: 8px;
   --radii-3: 16px;
   --radii-round: 50%;
-  --shadows-small: 0 5px 10px rgba(0, 0, 0, 0.12);
-  --shadows-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
-  --shadows-large: 0 30px 60px rgba(0, 0, 0, 0.12);
+  --shadows-small: 0 5px 10px hsla(0, 0, 0, 0.12);
+  --shadows-medium: 0 8px 30px hsla(0, 0, 0, 0.12);
+  --shadows-large: 0 30px 60px hsla(0, 0, 0, 0.12);
   --transitions-snappy: cubic-bezier(0.2, 0.8, 0.2, 1);
 `

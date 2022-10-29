@@ -67,8 +67,8 @@ const Container = styled(motion.div)`
       }
     }
     p {
-      color: rgba(var(--colors-lowContrast), 0.5);
-      text-decoration-color: rgba(var(--colors-lowContrast), 0.5);
+      color: hsla(var(--colors-lowContrast), 0.5);
+      text-decoration-color: hsla(var(--colors-lowContrast), 0.5);
     }
   }
 `
@@ -103,16 +103,16 @@ const DeleteContextMenuItem = styled(ContextMenuItem)`
   border: 0;
   border-radius: 0.25rem;
   box-sizing: border-box;
-  background-color: rgba(var(--colors-lowContrast), 0.05);
+  background-color: hsla(var(--colors-lowContrast), 0.05);
   &:hover {
-    background-color: rgba(var(--colors-highContrast), 0.15);
+    background-color: hsla(var(--colors-highContrast), 0.15);
     cursor: pointer;
   }
 `
 
 const StyledContextMenuContent = styled(ContextMenuContent)`
-  background-color: rgba(var(--colors-bg));
-  border: 1px solid rgba(var(--colors-lowContrast), 0.5);
+  background-color: hsla(var(--colors-bg));
+  border: 1px solid hsla(var(--colors-lowContrast), 0.5);
   padding: 0.4rem;
   border-radius: 0.5rem;
   box-sizing: border-box;

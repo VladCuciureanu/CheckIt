@@ -39,7 +39,7 @@ export default function Slider({ hoveredElement }: SliderProps) {
 
 const Component = styled.div`
   opacity: 0;
-  background-color: rgba(var(--colors-lowContrast), 0.15);
+  background-color: hsla(var(--colors-lowContrast), 0.15);
   position: absolute;
   border-radius: 0.5rem;
   max-height: 2.75rem;

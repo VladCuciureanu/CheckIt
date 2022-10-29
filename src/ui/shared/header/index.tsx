@@ -33,7 +33,7 @@ const Anchor = styled.a`
 const Logo = styled(UnstyledLogo)`
   & {
     cursor: pointer;
-    fill: rgba(var(--colors-lowContrast), 0.5);
+    fill: hsla(var(--colors-lowContrast), 0.5);
     transition: fill 0.3s ease;
     :hover {
       fill: hsl(var(--colors-highContrast));

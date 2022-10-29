@@ -58,7 +58,7 @@ export default function HomePage() {
 const Divider = styled.div`
   min-height: 1px;
   min-width: 100%;
-  background-color: rgba(var(--colors-lowContrast), 0.5);
+  background-color: hsla(var(--colors-lowContrast), 0.5);
   margin-top: 0.5rem;
   margin-bottom: 1rem;
 `

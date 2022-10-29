@@ -39,14 +39,14 @@ const StyledInput = styled.input`
   margin-left: -1.25rem;
 
   ::placeholder {
-    color: rgba(var(--colors-lowContrast), 0.35);
+    color: hsla(var(--colors-lowContrast), 0.35);
     transition: color 0.5s ease;
     /* text-align: center; */
   }
 
   &:hover {
     ::placeholder {
-      color: rgba(var(--colors-lowContrast), 0.6);
+      color: hsla(var(--colors-lowContrast), 0.6);
       text-align: left;
     }
   }
