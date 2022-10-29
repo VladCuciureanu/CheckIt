@@ -36,7 +36,7 @@ const Logo = styled(UnstyledLogo)`
     fill: rgba(var(--colors-lowContrast), 0.5);
     transition: fill 0.3s ease;
     :hover {
-      fill: rgb(var(--colors-highContrast));
+      fill: hsl(var(--colors-highContrast));
     }
   }
 `

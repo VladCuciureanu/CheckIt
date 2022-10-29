@@ -60,10 +60,10 @@ const Container = styled(motion.div)`
     svg {
       opacity: 0.25;
       #fill {
-        fill: rgb(var(--colors-lowContrast));
+        fill: hsl(var(--colors-lowContrast));
       }
       #outline {
-        fill: rgb(var(--colors-lowContrast));
+        fill: hsl(var(--colors-lowContrast));
       }
     }
     p {
@@ -74,7 +74,7 @@ const Container = styled(motion.div)`
 `
 
 const Checkbox = styled(Squircle)`
-  fill: rgb(var(--colors-highContrast));
+  fill: hsl(var(--colors-highContrast));
   opacity: 0.8;
   max-width: 1.5rem;
   max-height: 1.5rem;
@@ -98,7 +98,7 @@ const Label = styled.p`
 `
 
 const DeleteContextMenuItem = styled(ContextMenuItem)`
-  color: rgb(var(--colors-red-9));
+  color: hsl(var(--colors-red-9));
   padding: 0.35rem;
   border: 0;
   border-radius: 0.25rem;

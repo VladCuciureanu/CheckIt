@@ -59,14 +59,14 @@ const Trigger = styled(DropdownMenu.Trigger)`
   &:hover {
     background-color: rgba(var(--colors-lowContrast), 0.15);
     svg {
-      color: rgb(var(--colors-highContrast));
+      color: hsl(var(--colors-highContrast));
     }
   }
 `
 
 const Content = styled(DropdownMenu.Content)`
   min-width: 220;
-  background-color: rgb(var(--colors-bg));
+  background-color: hsl(var(--colors-bg));
   border: 1px solid rgba(var(--colors-lowContrast), 0.5);
   border-radius: 0.75rem;
   padding: 0.35rem;
@@ -88,7 +88,7 @@ const Item = styled(DropdownMenu.Item)`
 `
 
 const DangerousItem = styled(Item)`
-  color: rgb(var(--colors-red-9));
+  color: hsl(var(--colors-red-9));
 `
 
 const RightSlot = styled.div`
