@@ -11,6 +11,7 @@ const Trigger = styled(DropdownMenu.Trigger)`
   align-items: center;
   justify-content: center;
   svg {
+    width: 32px;
     max-width: 24px;
     color: hsla(var(--colors-lowContrast), 0.5);
     transition: color 0.3s ease;
