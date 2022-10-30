@@ -3,10 +3,9 @@ import {
   ContextMenuItem,
   ContextMenuContent,
 } from "@radix-ui/react-context-menu"
-import { motion } from "framer-motion"
 import styled from "styled-components"
 
-const Container = styled(motion.div)`
+const Container = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -14,6 +13,7 @@ const Container = styled(motion.div)`
   padding: 0.35rem 0;
   border-radius: 0.5rem;
   user-select: none;
+  transition: filter 1s ease;
 
   &.checked {
     svg {
@@ -28,6 +28,11 @@ const Container = styled(motion.div)`
     p {
       color: hsla(var(--colors-lowContrast), 0.5);
       text-decoration-color: hsla(var(--colors-lowContrast), 0.5);
+    }
+    &.blurring {
+      :not(&:hover) {
+        filter: blur(3px);
+      }
     }
   }
 `

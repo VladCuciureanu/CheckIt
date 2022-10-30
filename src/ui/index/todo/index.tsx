@@ -1,8 +1,9 @@
 import { TodoItem } from "@/types/todo-item"
 import { ContextMenu, ContextMenuTrigger } from "@radix-ui/react-context-menu"
-import { MouseEventHandler } from "react"
+import { MouseEventHandler, useContext } from "react"
 import Trash from "@/ui/shared/graphics/trash"
 import Styles from "./styles"
+import { BlurringContext } from "@/pages/_app"
 
 type TodoProps = {
   dto: TodoItem
@@ -19,12 +20,20 @@ export default function Todo({
   onMouseLeave,
   onDelete,
 }: TodoProps) {
+  const { blurring } = useContext(BlurringContext)
+  var classes: string[] = []
+  if (dto.checked) {
+    classes = ["checked", ...classes]
+  }
+  if (blurring) {
+    classes = ["blurring", ...classes]
+  }
   return (
     <ContextMenu>
       <ContextMenuTrigger>
         <Container
           onClick={onClick}
-          className={dto.checked ? "checked" : ""}
+          className={classes.length ? classes.join(" ") : ""}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
         >

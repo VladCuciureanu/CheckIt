@@ -1,18 +1,24 @@
 import useStorage from "@/hooks/use-storage"
+import { BlurringContext } from "@/pages/_app"
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu"
 import { useTheme } from "next-themes"
-import { useCallback, useEffect, useState } from "react"
+import { useCallback, useContext, useEffect, useState } from "react"
 import Styles from "./styles"
 
 export default function HeaderMenu() {
-  const { theme, setTheme } = useTheme()
   const [_, setStorage] = useStorage()
+  const { theme, setTheme } = useTheme()
   const [metaKeySymbol, setMetaKeySymbol] = useState("")
+  const { blurring, setBlurring } = useContext(BlurringContext)
 
   const toggleTheme = useCallback(
     () => setTheme(theme === "light" ? "dark" : "light"),
     [setTheme, theme],
   )
+
+  const toggleBlurring = useCallback(() => {
+    setBlurring(!blurring)
+  }, [blurring, setBlurring])
 
   const clearItems = useCallback(() => {
     setStorage([])
@@ -24,11 +30,14 @@ export default function HeaderMenu() {
       if (event.code === "KeyK" && event.metaKey) {
         toggleTheme()
       }
+      if (event.code === "KeyB" && event.metaKey) {
+        toggleBlurring()
+      }
       if (event.code === "KeyX" && event.ctrlKey && event.shiftKey) {
         clearItems()
       }
     },
-    [clearItems, toggleTheme],
+    [clearItems, toggleBlurring, toggleTheme],
   )
 
   useEffect(() => {
@@ -60,6 +69,9 @@ export default function HeaderMenu() {
         <Content align="end">
           <Item onClick={() => toggleTheme()}>
             Toggle Theme <RightSlot>{metaKeySymbol}+K</RightSlot>
+          </Item>
+          <Item onClick={() => toggleBlurring()}>
+            Toggle Blurring <RightSlot>{metaKeySymbol}+B</RightSlot>
           </Item>
           <DangerousItem onClick={() => clearItems()}>
             Clear Items <RightSlot>⌃+⇧+X</RightSlot>
