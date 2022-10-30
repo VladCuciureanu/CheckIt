@@ -43,6 +43,7 @@ const Item = styled(DropdownMenu.Item)`
   border-radius: 0.4rem;
   &:hover {
     background-color: hsla(var(--colors-lowContrast), 0.175);
+    cursor: pointer;
   }
 `
 

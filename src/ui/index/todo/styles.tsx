@@ -61,34 +61,38 @@ const Label = styled.p`
   transition: text-decoration-color 0.3s ease;
 `
 
-const DeleteContextMenuItem = styled(ContextMenuItem)`
-  color: hsl(var(--colors-red-9));
+const StyledContextMenuContent = styled(ContextMenuContent)`
+  min-width: 220;
+  background-color: hsl(var(--colors-bg));
+  border: 1px solid hsla(var(--colors-lowContrast), 0.5);
+  border-radius: 0.75rem;
   padding: 0.35rem;
-  border: 0;
-  border-radius: 0.25rem;
-  box-sizing: border-box;
-  background-color: hsla(var(--colors-lowContrast), 0.05);
-  &:hover {
-    background-color: hsla(var(--colors-highContrast), 0.15);
-    cursor: pointer;
-  }
+`
+
+const StyledContextMenuItem = styled(ContextMenuItem)`
+  all: unset;
   display: flex;
-  gap: 0.25rem;
+  flex-direction: row;
   align-items: center;
-  & svg {
-    width: 18px;
-    stroke: hsl(var(--colors-red-9));
-    stroke-width: 1.5px;
+  justify-content: space-between;
+  gap: 0.45rem;
+  padding: 0.55rem;
+  font-size: 0.8rem;
+  border-radius: 0.4rem;
+  &:hover {
+    background-color: hsla(var(--colors-lowContrast), 0.175);
+    cursor: pointer;
   }
 `
 
-const StyledContextMenuContent = styled(ContextMenuContent)`
-  background-color: hsla(var(--colors-bg));
-  border: 1px solid hsla(var(--colors-lowContrast), 0.5);
-  padding: 0.4rem;
-  border-radius: 0.5rem;
-  box-sizing: border-box;
-  z-index: 10;
+const DeleteContextMenuItem = styled(StyledContextMenuItem)`
+  color: hsl(var(--colors-red-9));
+  & svg {
+    width: 16px;
+    height: 16px;
+    margin: -2px;
+    stroke: hsl(var(--colors-red-9));
+  }
 `
 
 const Styles = {
