@@ -1,4 +1,3 @@
-import Squircle from "@/ui/shared/graphics/squircle"
 import {
   ContextMenuItem,
   ContextMenuContent,
@@ -16,15 +15,6 @@ const Container = styled.div`
   transition: filter 1s ease;
 
   &.checked {
-    svg {
-      opacity: 0.25;
-      #fill {
-        fill: hsl(var(--colors-lowContrast));
-      }
-      #outline {
-        fill: hsl(var(--colors-lowContrast));
-      }
-    }
     p {
       color: hsla(var(--colors-lowContrast), 0.5);
       text-decoration-color: hsla(var(--colors-lowContrast), 0.5);
@@ -35,20 +25,6 @@ const Container = styled.div`
       }
     }
   }
-`
-
-const Checkbox = styled(Squircle)`
-  fill: hsl(var(--colors-highContrast));
-  opacity: 0.8;
-  max-width: 1.5rem;
-  max-height: 1.5rem;
-  min-width: 1.5rem;
-  min-height: 1.5rem;
-  margin-top: 0.05rem;
-  #fill {
-    fill: transparent;
-  }
-  transition: opacity 0.3s ease;
 `
 
 const Label = styled.p`
@@ -98,7 +74,6 @@ const DeleteContextMenuItem = styled(StyledContextMenuItem)`
 const Styles = {
   StyledContextMenuContent,
   DeleteContextMenuItem,
-  Checkbox,
   Label,
   Container,
 }

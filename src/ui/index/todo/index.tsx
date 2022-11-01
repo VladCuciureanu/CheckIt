@@ -4,6 +4,7 @@ import { MouseEventHandler, useContext } from "react"
 import Trash from "@/ui/shared/graphics/trash"
 import Styles from "./styles"
 import { BlurringContext } from "@/pages/_app"
+import Checkbox from "./checkbox"
 
 type TodoProps = {
   dto: TodoItem
@@ -37,7 +38,7 @@ export default function Todo({
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
         >
-          <Checkbox />
+          <Checkbox checked={dto.checked} />
           <Label>{dto.label}</Label>
         </Container>
       </ContextMenuTrigger>
@@ -52,7 +53,6 @@ export default function Todo({
 }
 
 const Container = Styles.Container
-const Checkbox = Styles.Checkbox
 const Label = Styles.Label
 const Content = Styles.StyledContextMenuContent
 const DeleteItem = Styles.DeleteContextMenuItem
