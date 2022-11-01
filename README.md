@@ -30,6 +30,7 @@ Starting **CheckIt** is as simple as running the following command:
 pnpm i && pnpm start
 ```
 
+<!--
 You can also enable optional features by setting the appropriate environment variables:
 
 ```js
@@ -42,6 +43,7 @@ DATABASE_USER = root
 DATABASE_PASS = CENSORED
 DATABASE_CONNECTION_STRING = CENSORED
 ```
+-->
 
 ### Contributing
 
