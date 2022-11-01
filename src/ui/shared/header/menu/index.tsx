@@ -9,7 +9,7 @@ import Styles from "./styles"
 export default function HeaderMenu() {
   const [_, setStorage] = useStorage()
   const { theme, setTheme } = useTheme()
-  const [metaKeySymbol, setMetaKeySymbol] = useState("")
+  const [isMac, setIsMac] = useState(false)
   const { blurring, setBlurring } = useContext(BlurringContext)
 
   const toggleTheme = useCallback(() => {
@@ -27,23 +27,27 @@ export default function HeaderMenu() {
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
-      if (event.code === "KeyK" && event.metaKey) {
+      if (
+        event.code === "KeyK" &&
+        (event.metaKey || (!isMac && event.altKey))
+      ) {
         toggleTheme()
       }
-      if (event.code === "KeyB" && event.metaKey) {
+      if (
+        event.code === "KeyB" &&
+        (event.metaKey || (!isMac && event.altKey))
+      ) {
         toggleBlurring()
       }
       if (event.code === "KeyX" && event.ctrlKey && event.shiftKey) {
         clearItems()
       }
     },
-    [clearItems, toggleBlurring, toggleTheme],
+    [clearItems, isMac, toggleBlurring, toggleTheme],
   )
 
   useEffect(() => {
-    navigator.platform.includes("Mac")
-      ? setMetaKeySymbol("⌘")
-      : setMetaKeySymbol("Win")
+    navigator.platform.includes("Mac") ? setIsMac(true) : setIsMac(false)
     document.addEventListener("keydown", handleKeyPress)
     return () => document.removeEventListener("keydown", handleKeyPress)
   }, [handleKeyPress])
@@ -56,10 +60,10 @@ export default function HeaderMenu() {
       <DropdownMenu.Portal>
         <Content align="end">
           <Item onClick={() => toggleTheme()}>
-            Toggle Theme <RightSlot>{metaKeySymbol}+K</RightSlot>
+            Toggle Theme <RightSlot>{isMac ? "⌘" : "Alt"}+K</RightSlot>
           </Item>
           <Item onClick={() => toggleBlurring()}>
-            Toggle Blurring <RightSlot>{metaKeySymbol}+B</RightSlot>
+            Toggle Blurring <RightSlot>{isMac ? "⌘" : "Alt"}+B</RightSlot>
           </Item>
           <DangerousItem onClick={() => clearItems()}>
             Clear Items <RightSlot>⌃+⇧+X</RightSlot>
