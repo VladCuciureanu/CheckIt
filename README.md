@@ -54,5 +54,5 @@ To contribute, please read our
 
 [build status]: https://github.com/VladCuciureanu/CheckIt/actions
 [build status - cirrus]: https://github.com/VladCuciureanu/CheckIt/workflows/ci/badge.svg?branch=main
-[twitter handle]: https://img.shields.io/twitter/follow/VladinskiDev.svg?style=social&label=Follow
-[twitter badge]: https://twitter.com/intent/follow?screen_name=VladinskiDev
+[twitter handle]: https://img.shields.io/twitter/follow/VladCuciureanu_.svg?style=social&label=Follow
+[twitter badge]: https://twitter.com/intent/follow?screen_name=VladCuciureanu_
