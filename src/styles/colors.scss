@@ -1,0 +1,15 @@
+// Light theme
+:root {
+  --accent-color: #e63e44;
+}
+
+// Dark theme
+@media (prefers-color-scheme: dark) {
+  :root {
+    --accent-color: #00ff00;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+}
