@@ -2,17 +2,16 @@
 import styles from "./index.module.scss";
 import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useState } from "react";
+import HamburgerIcon from "@/assets/icons/Hamburger";
+import XIcon from "@/assets/icons/X";
 
 export default function HeaderMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
-    <DropdownMenu.Root>
+    <DropdownMenu.Root onOpenChange={(value) => setMenuOpen(value)}>
       <DropdownMenu.Trigger asChild>
-        <button
-          className={styles.Trigger}
-          onClick={() => setMenuOpen(!menuOpen)}
-        >
-          {" "}
+        <button className={styles.Trigger}>
+          {menuOpen ? <XIcon /> : <HamburgerIcon />}
         </button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
