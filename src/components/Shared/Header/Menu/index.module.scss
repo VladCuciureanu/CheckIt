@@ -1,0 +1,64 @@
+.Container {
+  width: auto;
+  margin-top: 0.25rem;
+  padding: 0.35rem;
+  background-color: var(--background-color);
+  border-radius: var(--ui-radius);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-medium);
+}
+
+.Item,
+.DangerousItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  outline: none;
+  height: 2rem;
+  padding: 0;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  border-radius: calc(var(--ui-radius) * 0.8);
+  cursor: pointer;
+  &:hover {
+    background-color: var(--accent-color-2);
+  }
+}
+
+.RightSlot {
+  margin-left: 20px;
+  font-size: 0.75rem;
+  background-color: var(--accent-color-2);
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+  border-radius: calc(var(--ui-radius) * 0.8);
+}
+
+[data-highlighted] > .RightSlot {
+  background-color: var(--background-color);
+}
+
+// [data-disabled] .RightSlot {
+// }
+
+.Trigger {
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: var(--ui-radius);
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+  transition: background 0.25s, border-color 0.1s;
+
+  &:hover {
+    border-color: var(--foreground-color);
+  }
+
+  &:active {
+    background: var(--accent-color-2);
+  }
+}
+
+.DangerousItem {
+  color: red;
+}
