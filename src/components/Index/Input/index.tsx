@@ -12,7 +12,7 @@ type InputFieldProps = Omit<ComponentProps<"input">, "onSubmit"> & {
 export default function InputField(props: InputFieldProps) {
   const { onSubmit, isEmpty, ...fieldProps } = props;
   const [focused, setFocused] = useState(false);
-  const showButton = focused || !isEmpty;
+  const showButton = focused && !isEmpty;
   return (
     <form className={styles.Form} onSubmit={onSubmit}>
       <input
