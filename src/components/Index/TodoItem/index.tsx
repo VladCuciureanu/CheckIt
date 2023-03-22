@@ -23,8 +23,8 @@ export default function TodoItem(props: TodoItemProps) {
       </div>
       {props.data.children.length > 0 && (
         <div className={styles.ChildrenContainer}>
-          {props.data.children.map((item, index) => (
-            <TodoItem key={index} data={item} />
+          {props.data.children.map((item) => (
+            <TodoItem key={item.id} data={item} />
           ))}
         </div>
       )}
