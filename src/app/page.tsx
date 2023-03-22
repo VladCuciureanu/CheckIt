@@ -37,7 +37,7 @@ const mockData: TodoItemData[] = [
     content: "aeet",
     children: [
       { checked: false, content: "beet", children: [] },
-      { checked: true, content: "ceet", children: [] },
+      { checked: true, content: "ceet", children: [], color: "#F00" },
     ],
   },
   { checked: false, content: "deet", children: [] },
