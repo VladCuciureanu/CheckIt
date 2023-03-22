@@ -17,7 +17,7 @@ export default function InputField(props: InputFieldProps) {
     <form className={styles.Form} onSubmit={onSubmit}>
       <input
         className={isEmpty ? styles.InputFieldEmpty : styles.InputField}
-        placeholder={"What are you thinking about?"}
+        placeholder={"What are you thinking?"}
         onFocus={() => setFocused(true)}
         onBlur={() => setFocused(false)}
         style={showButton ? { width: "calc(100% - 3.125rem)" } : undefined}

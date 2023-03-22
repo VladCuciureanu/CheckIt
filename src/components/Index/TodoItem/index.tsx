@@ -1,14 +1,20 @@
 import { TodoItemData } from "@/types/todo-item-data";
 import styles from "./index.module.scss";
 import { CSSProperties } from "react";
+import { useSettings } from "@/hooks/settings";
 
 type TodoItemProps = {
   data: TodoItemData;
 };
 
 export default function TodoItem(props: TodoItemProps) {
+  const settings = useSettings();
+  const shouldBlur = settings?.blurred && props.data.checked;
+
   const style = {
     "--background-color": props.data.color ?? "var(--accent-color-2)",
+    filter: shouldBlur ? "blur(.1rem)" : undefined,
+    opacity: shouldBlur ? 0.25 : undefined,
   } as CSSProperties;
 
   return (
