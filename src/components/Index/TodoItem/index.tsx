@@ -5,11 +5,13 @@ import { useSettings } from "@/hooks/settings";
 
 type TodoItemProps = {
   data: TodoItemData;
+  overrideBlur?: boolean;
 };
 
 export default function TodoItem(props: TodoItemProps) {
   const settings = useSettings();
-  const shouldBlur = settings?.blurred && props.data.checked;
+  const shouldBlur =
+    props.overrideBlur || (settings?.blurred && props.data.checked);
 
   const style = {
     "--background-color": props.data.color ?? "var(--accent-color-2)",
@@ -30,7 +32,7 @@ export default function TodoItem(props: TodoItemProps) {
       {props.data.children.length > 0 && (
         <div className={styles.ChildrenContainer}>
           {props.data.children.map((item) => (
-            <TodoItem key={item.id} data={item} />
+            <TodoItem key={item.id} data={item} overrideBlur={shouldBlur} />
           ))}
         </div>
       )}

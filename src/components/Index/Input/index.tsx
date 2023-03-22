@@ -3,6 +3,7 @@ import { ComponentProps, FormEventHandler, useState } from "react";
 import styles from "./index.module.scss";
 import Button from "@/components/Shared/Button";
 import PlusCircleIcon from "@/assets/icons/PlusCircle";
+import { useSettings } from "@/hooks/settings";
 
 type InputFieldProps = Omit<ComponentProps<"input">, "onSubmit"> & {
   onSubmit: FormEventHandler<HTMLFormElement>;
@@ -12,9 +13,17 @@ type InputFieldProps = Omit<ComponentProps<"input">, "onSubmit"> & {
 export default function InputField(props: InputFieldProps) {
   const { onSubmit, isEmpty, ...fieldProps } = props;
   const [focused, setFocused] = useState(false);
+  const settings = useSettings();
+
   const showButton = focused && !isEmpty;
+  const shouldBlur = !focused && isEmpty && settings?.blurred;
+
   return (
-    <form className={styles.Form} onSubmit={onSubmit}>
+    <form
+      className={styles.Form}
+      onSubmit={onSubmit}
+      style={shouldBlur ? { filter: "blur(.075rem)" } : undefined}
+    >
       <input
         className={isEmpty ? styles.InputFieldEmpty : styles.InputField}
         placeholder={"What are you thinking?"}
