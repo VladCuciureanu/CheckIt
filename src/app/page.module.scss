@@ -3,7 +3,7 @@
   flex-direction: column;
   width: 100%;
   max-width: min(var(--main-column-width), calc(100vw - 15rem));
-  height: 100vh;
+  min-height: calc(100vh - 2rem);
   margin-top: -2.5rem;
   margin-left: auto;
   margin-right: auto;
