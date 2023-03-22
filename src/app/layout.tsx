@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import HeaderLogo from "@/components/Shared/Header/Logo";
 import HeaderMenu from "@/components/Shared/Header/Menu";
 import styles from "./layout.module.scss";
+import { SettingsProvider } from "@/hooks/settings";
 
 export const metadata = {
   title: "CheckIt",
@@ -19,13 +20,15 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className={styles.Body}>
-        <div className={styles.Container}>
-          <header className={styles.Header}>
-            <HeaderLogo />
-            <HeaderMenu />
-          </header>
-          <main className={styles.Main}>{children}</main>
-        </div>
+        <SettingsProvider>
+          <div className={styles.Container}>
+            <header className={styles.Header}>
+              <HeaderLogo />
+              <HeaderMenu />
+            </header>
+            <main className={styles.Main}>{children}</main>
+          </div>
+        </SettingsProvider>
       </body>
     </html>
   );
