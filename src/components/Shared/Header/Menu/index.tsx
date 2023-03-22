@@ -9,6 +9,7 @@ import {
   useSettings,
   useSettingsDispatch,
 } from "@/hooks/settings";
+import Button from "../../Button";
 
 export default function HeaderMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,9 +24,7 @@ export default function HeaderMenu() {
   return (
     <DropdownMenu.Root onOpenChange={(value) => setMenuOpen(value)}>
       <DropdownMenu.Trigger asChild>
-        <button className={styles.Trigger}>
-          {menuOpen ? <XIcon /> : <HamburgerIcon />}
-        </button>
+        <Button>{menuOpen ? <XIcon /> : <HamburgerIcon />}</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
         <DropdownMenu.Content className={styles.Container} align="end">

@@ -26,7 +26,7 @@ export default function RootLayout({
               <HeaderLogo />
               <HeaderMenu />
             </header>
-            <main className={styles.Main}>{children}</main>
+            {children}
           </div>
         </SettingsProvider>
       </body>

@@ -1,0 +1,30 @@
+.Button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 2.5rem;
+  width: 2.5rem;
+  border-radius: var(--ui-radius);
+  background: var(--background-color);
+  border: 1px solid var(--border-color);
+  transition: background 0.25s, border-color 0.1s;
+  outline: none;
+  padding: 0.5rem;
+  cursor: pointer;
+
+  & svg {
+    margin: 0;
+    stroke-linecap: round;
+    stroke: var(--foreground-color);
+    stroke-width: 0.1rem;
+  }
+
+  &:hover {
+    border-color: var(--foreground-color);
+  }
+
+  &:active {
+    background: var(--accent-color-2);
+  }
+}

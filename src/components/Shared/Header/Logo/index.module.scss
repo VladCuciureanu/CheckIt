@@ -6,4 +6,7 @@
 
 .Link {
   text-decoration: none;
+  &:focus-visible {
+    outline: none;
+  }
 }

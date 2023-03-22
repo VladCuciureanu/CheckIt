@@ -1,0 +1,39 @@
+.InputField,
+.InputFieldEmpty {
+  width: 100%;
+  height: 2.5rem;
+  border-radius: var(--ui-radius);
+  border: 1px solid var(--border-color);
+  padding-left: 1rem;
+  margin-right: -2.5rem;
+
+  &:focus-visible {
+    outline: none;
+  }
+
+  transition: width 1s;
+}
+
+.InputFieldEmpty {
+  &::placeholder {
+    transition: padding 0.5s;
+  }
+  &:not(:focus) {
+    &::placeholder {
+      padding: calc(
+        (min(var(--main-column-width), calc(100vw - 15rem)) / 2) - 6.25rem
+      );
+    }
+  }
+}
+
+.Form {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.Button {
+  width: 2.5rem;
+  transition: all 1s !important;
+}
