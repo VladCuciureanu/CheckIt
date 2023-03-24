@@ -1,9 +1,11 @@
+/* eslint-disable @next/next/no-before-interactive-script-outside-document */
 import "@/styles/globals.scss";
 import { Inter } from "next/font/google";
 import HeaderLogo from "@/components/Shared/Header/Logo";
 import HeaderMenu from "@/components/Shared/Header/Menu";
 import styles from "./layout.module.scss";
-import { SettingsProvider } from "@/hooks/settings";
+import Providers from "@/components/Shared/Providers";
+import Script from "next/script";
 
 export const metadata = {
   title: "CheckIt",
@@ -18,9 +20,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={inter.className}>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
       <body className={styles.Body}>
-        <SettingsProvider>
+        <Providers>
           <div className={styles.Container}>
             <header className={styles.Header}>
               <HeaderLogo />
@@ -28,7 +30,7 @@ export default function RootLayout({
             </header>
             {children}
           </div>
-        </SettingsProvider>
+        </Providers>
       </body>
     </html>
   );

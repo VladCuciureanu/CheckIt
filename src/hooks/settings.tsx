@@ -8,16 +8,28 @@ import {
   useReducer,
 } from "react";
 
+export enum SettingsAction {
+  Init,
+  ToggleBlur,
+}
+
+type Settings = {
+  blurred: boolean;
+};
+
+export const SettingsLocalStorageKey = "settings";
+const SettingsContext = createContext<Settings | null>(null);
+const SettingsDispatchContext = createContext<Dispatch<any> | null>(null);
+
 const DefaultSettings: Settings = {
   blurred: false,
-  theme: "auto",
 };
 
 export function SettingsProvider({ children }: { children: ReactNode }) {
   const [settings, dispatch] = useReducer(settingsReducer, DefaultSettings);
 
   useEffect(() => {
-    const data = localStorage.getItem(LocalStorageKey);
+    const data = localStorage.getItem(SettingsLocalStorageKey);
     if (data) {
       dispatch({
         type: SettingsAction.Init,
@@ -28,7 +40,7 @@ export function SettingsProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     if (settings !== DefaultSettings) {
-      localStorage.setItem(LocalStorageKey, JSON.stringify(settings));
+      localStorage.setItem(SettingsLocalStorageKey, JSON.stringify(settings));
     }
   }, [settings]);
 
@@ -68,43 +80,8 @@ function settingsReducer(
       };
     }
 
-    case SettingsAction.ToggleTheme: {
-      let newTheme;
-      switch (settings.theme) {
-        case "auto":
-          newTheme = "dark";
-          break;
-        case "dark":
-          newTheme = "light";
-          break;
-        case "light":
-          newTheme = "auto";
-          break;
-      }
-      return {
-        ...settings,
-        theme: newTheme,
-      };
-    }
     default: {
       throw Error("Unknown action: " + action.type);
     }
   }
-}
-
-const LocalStorageKey = "settings";
-
-type Settings = {
-  blurred: boolean;
-  theme: "light" | "dark" | "auto";
-};
-
-const SettingsContext = createContext<Settings | null>(null);
-
-const SettingsDispatchContext = createContext<Dispatch<any> | null>(null);
-
-export enum SettingsAction {
-  Init,
-  ToggleBlur,
-  ToggleTheme,
 }

@@ -4,6 +4,7 @@ import { FormEvent, useState } from "react";
 import styles from "./page.module.scss";
 import TodoItem from "@/components/Index/TodoItem";
 import { TodoItemData } from "@/types/todo-item-data";
+import KeyPressListener from "@/components/Shared/KeyPressListener";
 
 export default function Home() {
   const [input, setInput] = useState<string>("");
@@ -27,6 +28,7 @@ export default function Home() {
       {todoItems.map((item) => (
         <TodoItem key={item.id} data={item} />
       ))}
+      <KeyPressListener />
     </main>
   );
 }

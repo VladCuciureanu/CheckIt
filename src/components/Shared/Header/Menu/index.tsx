@@ -10,11 +10,12 @@ import {
   useSettingsDispatch,
 } from "@/hooks/settings";
 import Button from "../../Button";
+import { useTheme } from "next-themes";
+import { UITheme, getNextThemeInRotation } from "@/constants/themes";
 
 export default function HeaderMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
-
-  const settings = useSettings();
+  const { theme, setTheme } = useTheme();
   const settingsDispatch = useSettingsDispatch();
 
   if (settingsDispatch === null) {
@@ -34,21 +35,19 @@ export default function HeaderMenu() {
               settingsDispatch({ type: SettingsAction.ToggleBlur });
             }}
           >
-            Toggle Blur <div className={styles.RightSlot}>⌘+B</div>
+            Toggle Blur <div className={styles.RightSlot}>⌃B</div>
           </DropdownMenu.Item>
           <DropdownMenu.Item
             className={styles.Item}
-            onClick={() => {
-              settingsDispatch({ type: SettingsAction.ToggleTheme });
-            }}
+            onClick={() => setTheme(getNextThemeInRotation(theme as UITheme))}
           >
-            Toggle Theme <div className={styles.RightSlot}>⌘+T</div>
+            Toggle Theme <div className={styles.RightSlot}>⌃T</div>
           </DropdownMenu.Item>
           <DropdownMenu.Item className={styles.Item}>
-            Export <div className={styles.RightSlot}>⌘+S</div>
+            Export <div className={styles.RightSlot}>⌃S</div>
           </DropdownMenu.Item>
           <DropdownMenu.Item className={styles.DangerousItem}>
-            Clear Board <div className={styles.RightSlot}>⌘+T</div>
+            Clear Board <div className={styles.RightSlot}>⇧⌃X</div>
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>

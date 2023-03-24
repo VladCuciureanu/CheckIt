@@ -19,6 +19,8 @@ export default function TodoItem(props: TodoItemProps) {
     opacity: shouldBlur ? 0.25 : undefined,
   } as CSSProperties;
 
+  const handleChange = () => {};
+
   return (
     <>
       <div className={styles.Container} style={style}>
@@ -26,6 +28,7 @@ export default function TodoItem(props: TodoItemProps) {
           className={styles.Checkbox}
           checked={props.data.checked}
           type={"checkbox"}
+          onChange={handleChange}
         />
         {props.data.content}
       </div>

@@ -1,21 +1,24 @@
-// Light theme
-:root {
+@mixin light-theme {
   --foreground-color: #000;
   --background-color: #fff;
   --border-color: #eaeaea;
   --accent-color-2: #eaeaea;
 }
 
-// Dark theme
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-color: #fff;
-    --background-color: #000;
-    --border-color: #eaeaea;
-    --accent-color-2: #eaeaea;
-  }
+@mixin dark-theme {
+  --foreground-color: #fff;
+  --background-color: #000;
+  --border-color: #eaeaea;
+  --accent-color-2: #eaeaea;
+}
 
-  html {
-    color-scheme: dark;
-  }
+// Light theme
+:root {
+  @include light-theme;
+}
+
+// Dark theme
+[data-theme="dark"] {
+  @include dark-theme;
+  color-scheme: dark;
 }
