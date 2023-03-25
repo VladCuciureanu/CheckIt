@@ -22,14 +22,14 @@
   border-radius: calc(var(--ui-radius) * 0.8);
   cursor: pointer;
   &:hover {
-    background-color: var(--accent-color-2);
+    background-color: var(--accent-color);
   }
 }
 
 .RightSlot {
   margin-left: 20px;
   font-size: 0.75rem;
-  background-color: var(--accent-color-2);
+  background-color: var(--accent-color);
   padding-left: 0.25rem;
   padding-right: 0.25rem;
   border-radius: calc(var(--ui-radius) * 0.8);

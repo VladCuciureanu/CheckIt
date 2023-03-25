@@ -1,3 +1,7 @@
 @import "reset.scss";
 @import "variables.scss";
-@import "colors.scss";
+@import "themes.scss";
+
+body {
+  color: rgb(var(--foreground-color));
+}

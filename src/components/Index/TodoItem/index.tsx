@@ -14,7 +14,7 @@ export default function TodoItem(props: TodoItemProps) {
     props.overrideBlur || (settings?.blurred && props.data.checked);
 
   const style = {
-    "--background-color": props.data.color ?? "var(--accent-color-2)",
+    "--custom-color": props.data.color ?? "var(--accent-color)",
     filter: shouldBlur ? "blur(.1rem)" : undefined,
     opacity: shouldBlur ? 0.25 : undefined,
   } as CSSProperties;

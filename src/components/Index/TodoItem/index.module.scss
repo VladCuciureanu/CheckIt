@@ -1,7 +1,7 @@
 .Container {
   display: flex;
   flex-direction: row;
-  background-color: var(--background-color);
+  background-color: var(--custom-color);
   border-radius: var(--ui-radius);
   padding: 0.5rem;
   padding-left: 0.5rem;
@@ -28,12 +28,12 @@
   outline: 0;
   flex-grow: 0;
   border-radius: 50%;
-  background-color: #ffffff;
+  background-color: var(--background-color);
   transition: background 300ms;
   cursor: pointer;
 
   &:focus {
-    box-shadow: inset 0 0 0 1px var(--foreground-color);
+    border: 1px solid var(--foreground-color);
   }
 
   &::before {
@@ -46,7 +46,6 @@
     border: 0;
     background-color: transparent;
     background-size: contain;
-    box-shadow: inset 0 0 0 1px var(--accent-color-2);
   }
 
   &:checked {
@@ -58,7 +57,7 @@
   }
 
   &:disabled {
-    background-color: var(--accent-color-2);
+    background-color: var(--accent-color);
     opacity: 0.84;
     cursor: not-allowed;
   }
@@ -73,7 +72,7 @@
     border: 0;
     background-color: transparent;
     background-size: contain;
-    box-shadow: inset 0 0 0 1px var(--accent-color-2);
+    box-shadow: inset 0 0 0 1px var(--accent-color);
 
     &:checked {
       box-shadow: none;

@@ -13,7 +13,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "prettier --write \"**/*.{ts,tsx,css,scss}\""
+    "format": "prettier --write \"**/*.{ts,tsx,css,scss}\"",
+    "generate-colors": "npx ts-node -O '{\"module\": \"commonjs\"}' src/scripts/generate-colors.ts"
   },
   "dependencies": {
     "@radix-ui/react-dropdown-menu": "^2.0.4",
@@ -24,6 +25,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@radix-ui/colors": "^0.1.8",
     "@types/node": "18.15.3",
     "@types/react": "18.0.28",
     "@types/react-dom": "18.0.11",
