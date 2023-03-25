@@ -1,6 +1,6 @@
 import DefaultTodoItems from "@/constants/default-todo-items";
 import TodoItemsReducer from "@/reducers/todo-items";
-import { TodoItemData, TodoItemsAction } from "@/types/todo-items";
+import { TodoItem, TodoItemsAction } from "@/types/todo-items";
 import {
   createContext,
   Dispatch,
@@ -10,7 +10,7 @@ import {
 } from "react";
 
 export const TodoItemsLocalStorageKey = "data";
-export const TodoItemsContext = createContext<TodoItemData[] | null>(null);
+export const TodoItemsContext = createContext<TodoItem[] | null>(null);
 export const TodoItemsDispatchContext = createContext<Dispatch<any> | null>(
   null
 );

@@ -7,11 +7,12 @@ import XIcon from "@/assets/icons/X";
 import { useSettingsDispatch } from "@/hooks/settings";
 import Button from "../../Button";
 import { useTheme } from "next-themes";
-import { UITheme, getNextThemeInRotation } from "@/constants/themes";
+import { getNextThemeInRotation } from "@/constants/themes";
 import { useTodoItems, useTodoItemsDispatch } from "@/hooks/todo-items";
 import { download } from "@/utils/download";
 import { SettingsAction } from "@/types/settings";
 import { TodoItemsAction } from "@/types/todo-items";
+import { UITheme } from "@/types/themes";
 
 export default function HeaderMenu() {
   const [menuOpen, setMenuOpen] = useState(false);

@@ -1,7 +1,8 @@
-import { UITheme, getNextThemeInRotation } from "@/constants/themes";
+import { getNextThemeInRotation } from "@/constants/themes";
 import { useSettingsDispatch } from "@/hooks/settings";
 import { useTodoItems, useTodoItemsDispatch } from "@/hooks/todo-items";
 import { SettingsAction } from "@/types/settings";
+import { UITheme } from "@/types/themes";
 import { TodoItemsAction } from "@/types/todo-items";
 import { download } from "@/utils/download";
 import { useTheme } from "next-themes";

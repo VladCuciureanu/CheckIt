@@ -1,7 +1,7 @@
-import { TodoItemData, TodoItemsAction } from "@/types/todo-items";
+import { TodoItem, TodoItemsAction } from "@/types/todo-items";
 
 export default function TodoItemsReducer(
-  todoItems: TodoItemData[],
+  todoItems: TodoItem[],
   action: {
     type: TodoItemsAction;
     payload: any;
@@ -13,14 +13,15 @@ export default function TodoItemsReducer(
     }
 
     case TodoItemsAction.Create: {
-      return [action.payload as TodoItemData, ...todoItems];
+      return [action.payload as TodoItem, ...todoItems];
     }
 
     case TodoItemsAction.Update: {
-      const otherItems = todoItems.filter(
-        (item) => item.id !== action.payload.id
-      );
-      return [action.payload, ...otherItems];
+      return [
+        ...todoItems.map((item) =>
+          item.id === action.payload.id ? action.payload : item
+        ),
+      ];
     }
 
     case TodoItemsAction.Delete: {

@@ -1,3 +1,5 @@
+import { UITheme } from "@/types/themes";
+
 export const getNextThemeInRotation = (currentTheme: UITheme) => {
   switch (currentTheme) {
     case UITheme.System:
@@ -12,9 +14,3 @@ export const getNextThemeInRotation = (currentTheme: UITheme) => {
       return UITheme.Dark;
   }
 };
-
-export enum UITheme {
-  System = "system",
-  Dark = "dark",
-  Light = "light",
-}

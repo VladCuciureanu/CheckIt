@@ -1,6 +1,6 @@
-import { TodoItemData } from "@/types/todo-items";
+import { TodoItem } from "@/types/todo-items";
 
-const DefaultTodoItems: TodoItemData[] = [
+const DefaultTodoItems: TodoItem[] = [
   {
     id: "9b54572f-de4a-4235-b82f-71dc3d35f0f9",
     checked: true,
