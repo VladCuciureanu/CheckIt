@@ -1,36 +1,40 @@
 import { UITheme, getNextThemeInRotation } from "@/constants/themes";
 import { SettingsAction, useSettingsDispatch } from "@/hooks/settings";
+import {
+  TodoItemsAction,
+  useTodoItems,
+  useTodoItemsDispatch,
+} from "@/hooks/todo-items";
+import { download } from "@/utils/download";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect } from "react";
 
 export default function KeyPressListener() {
-  const settingsDispatch = useSettingsDispatch() ?? placeholderDispatch;
+  const settingsDispatch = useSettingsDispatch();
+  const todoItemsDispatch = useTodoItemsDispatch();
   const { theme, setTheme } = useTheme();
+  const todoItems = useTodoItems();
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
       if (event.ctrlKey) {
         switch (event.key) {
           case "b":
-            settingsDispatch({ type: SettingsAction.ToggleBlur });
+            settingsDispatch!({ type: SettingsAction.ToggleBlur });
             break;
           case "t":
             setTheme(getNextThemeInRotation(theme as UITheme));
             break;
           case "s":
-            console.log("Tried to save board. Not yet implemented. Oops 😅");
+            download("check-it-data.txt", JSON.stringify(todoItems));
             break;
           case "x":
-            if (event.shiftKey) {
-              console.log(
-                "Tried to delete board. Not yet implemented. Oops 😅"
-              );
-            }
+            todoItemsDispatch!({ type: TodoItemsAction.Clear });
             break;
         }
       }
     },
-    [setTheme, settingsDispatch, theme]
+    [setTheme, settingsDispatch, theme, todoItems, todoItemsDispatch]
   );
 
   useEffect(() => {
@@ -43,7 +47,3 @@ export default function KeyPressListener() {
 
   return <></>;
 }
-
-const placeholderDispatch = () => {
-  console.warn("Dispatcher is not initialized. Try again later.");
-};

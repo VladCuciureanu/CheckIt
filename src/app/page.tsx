@@ -2,20 +2,35 @@
 import InputField from "@/components/Index/Input";
 import { FormEvent, useState } from "react";
 import styles from "./page.module.scss";
-import TodoItem from "@/components/Index/TodoItem";
-import { TodoItemData } from "@/types/todo-item-data";
+import TodoItem from "@/components/Index/Todo";
+import { TodoItemData } from "@/types/todo-item";
 import KeyPressListener from "@/components/Shared/KeyPressListener";
+import {
+  TodoItemsAction,
+  useTodoItems,
+  useTodoItemsDispatch,
+} from "@/hooks/todo-items";
+import { v4 } from "uuid";
 
 export default function Home() {
   const [input, setInput] = useState<string>("");
+  const todoItems = useTodoItems() ?? [];
+  const todoItemsDispatch = useTodoItemsDispatch();
 
   const createItem = (event: FormEvent<HTMLFormElement>) => {
-    console.log(input);
-    setInput("");
     event.preventDefault();
+    if (todoItemsDispatch) {
+      todoItemsDispatch({
+        type: TodoItemsAction.Create,
+        payload: {
+          id: v4(),
+          checked: false,
+          content: input,
+        } as TodoItemData,
+      });
+    }
+    setInput("");
   };
-
-  const todoItems = mockData; //TODO;
 
   return (
     <main className={styles.Container}>
@@ -32,38 +47,3 @@ export default function Home() {
     </main>
   );
 }
-
-const mockData: TodoItemData[] = [
-  {
-    id: "9b54572f-de4a-4235-b82f-71dc3d35f0f9",
-    checked: true,
-    content: "aeet",
-    children: [
-      {
-        id: "0f2bef70-905e-4764-a353-a42d76360389",
-        checked: false,
-        content: "beet",
-        children: [],
-      },
-      {
-        id: "92bb2050-43f7-46d1-820e-ef7dbf0534c9",
-        checked: true,
-        content: "ceet",
-        children: [],
-        color: "#F00",
-      },
-    ],
-  },
-  {
-    id: "85d78829-ae35-48a3-a250-11781c991e16",
-    checked: false,
-    content: "deet",
-    children: [],
-  },
-  {
-    id: "adb05e07-a422-4a24-a5a5-53596c3c33ed",
-    checked: true,
-    content: "eeet",
-    children: [],
-  },
-];

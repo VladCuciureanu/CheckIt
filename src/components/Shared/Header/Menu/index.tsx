@@ -12,15 +12,28 @@ import {
 import Button from "../../Button";
 import { useTheme } from "next-themes";
 import { UITheme, getNextThemeInRotation } from "@/constants/themes";
+import {
+  TodoItemsAction,
+  useTodoItems,
+  useTodoItemsDispatch,
+} from "@/hooks/todo-items";
+import { download } from "@/utils/download";
 
 export default function HeaderMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
+  const todoItems = useTodoItems();
+
   const settingsDispatch = useSettingsDispatch();
+  const todoItemsDispatch = useTodoItemsDispatch();
 
   if (settingsDispatch === null) {
     return <></>;
   }
+
+  const exportData = () => {
+    download("check-it-data.txt", JSON.stringify(todoItems));
+  };
 
   return (
     <DropdownMenu.Root onOpenChange={(value) => setMenuOpen(value)}>
@@ -43,11 +56,17 @@ export default function HeaderMenu() {
           >
             Toggle Theme <div className={styles.RightSlot}>⌃T</div>
           </DropdownMenu.Item>
-          <DropdownMenu.Item className={styles.Item}>
+          <DropdownMenu.Item
+            className={styles.Item}
+            onClick={() => exportData()}
+          >
             Export <div className={styles.RightSlot}>⌃S</div>
           </DropdownMenu.Item>
-          <DropdownMenu.Item className={styles.DangerousItem}>
-            Clear Board <div className={styles.RightSlot}>⇧⌃X</div>
+          <DropdownMenu.Item
+            className={styles.DangerousItem}
+            onClick={() => todoItemsDispatch!({ type: TodoItemsAction.Clear })}
+          >
+            Clear Board <div className={styles.RightSlot}>⌃X</div>
           </DropdownMenu.Item>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
