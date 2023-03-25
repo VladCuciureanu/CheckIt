@@ -1,11 +1,15 @@
 export const getNextThemeInRotation = (currentTheme: UITheme) => {
   switch (currentTheme) {
     case UITheme.System:
-      return UITheme.Dark;
+      const systemPrefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+      console.log(systemPrefersDark);
+      return systemPrefersDark ? UITheme.Light : UITheme.Dark;
     case UITheme.Dark:
       return UITheme.Light;
     case UITheme.Light:
-      return UITheme.System;
+      return UITheme.Dark;
   }
 };
 
