@@ -3,18 +3,18 @@
 // Light theme
 :root {
   @include light-colors;
-  --foreground-color: rgb(var(--gray12));
-  --background-color: rgb(var(--gray1));
-  --accent-color: rgb(var(--gray3));
-  --border-color: rgb(var(--gray4));
+  --foreground-color: var(--gray12);
+  --background-color: var(--gray1);
+  --accent-color: var(--gray3);
+  --border-color: var(--gray4);
 }
 
 // Dark theme
 [data-theme="dark"] {
   @include dark-colors;
-  --foreground-color: rgb(var(--gray12));
-  --background-color: rgb(var(--gray1));
-  --accent-color: rgb(var(--gray3));
-  --border-color: rgb(var(--gray4));
+  --foreground-color: var(--gray12);
+  --background-color: var(--gray1);
+  --accent-color: var(--gray3);
+  --border-color: var(--gray4);
   color-scheme: dark;
 }

@@ -16,12 +16,12 @@
   & svg {
     margin: 0;
     stroke-linecap: round;
-    stroke: var(--foreground-color);
+    stroke: rgb(var(--foreground-color));
     stroke-width: 0.1rem;
   }
 
   &:hover {
-    border-color: var(--foreground-color);
+    border-color: rgb(var(--foreground-color));
   }
 
   &:active {
