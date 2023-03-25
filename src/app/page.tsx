@@ -40,9 +40,11 @@ export default function Home() {
         onChange={(event) => setInput(event.target.value)}
         onSubmit={(event) => createItem(event)}
       />
-      {todoItems.map((item) => (
-        <TodoItem key={item.id} data={item} />
-      ))}
+      {todoItems
+        .filter((item) => item.parent === undefined)
+        .map((item) => (
+          <TodoItem key={item.id} data={item} />
+        ))}
       <KeyPressListener />
     </main>
   );

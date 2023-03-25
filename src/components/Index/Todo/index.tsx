@@ -2,6 +2,7 @@ import { TodoItemData } from "@/types/todo-item";
 import styles from "./index.module.scss";
 import { CSSProperties } from "react";
 import { useSettings } from "@/hooks/settings";
+import { useTodoItems } from "@/hooks/todo-items";
 
 type TodoProps = {
   data: TodoItemData;
@@ -10,6 +11,10 @@ type TodoProps = {
 
 export default function Todo(props: TodoProps) {
   const settings = useSettings();
+  const todoItems = useTodoItems();
+  const childNodes =
+    todoItems?.filter((item) => item.parent === props.data.id) ?? [];
+
   const shouldBlur =
     props.overrideBlur || (settings?.blurred && props.data.checked);
 
@@ -32,13 +37,13 @@ export default function Todo(props: TodoProps) {
         />
         {props.data.content}
       </div>
-      {/* {props.data.children.length > 0 && (
+      {childNodes?.length > 0 && (
         <div className={styles.ChildrenContainer}>
-          {props.data.children.map((item) => (
-            <TodoItem key={item.id} data={item} overrideBlur={shouldBlur} />
+          {childNodes.map((item) => (
+            <Todo key={item.id} data={item} overrideBlur={shouldBlur} />
           ))}
         </div>
-      )} */}
+      )}
     </>
   );
 }
