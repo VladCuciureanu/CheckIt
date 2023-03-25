@@ -56,7 +56,7 @@
   }
 
   &:disabled {
-    background-color: var(--accent-color);
+    background-color: rgb(var(--accent-color));
     opacity: 0.84;
     cursor: not-allowed;
   }
@@ -71,7 +71,7 @@
     border-color: rgba(var(--foreground-color), 0.15);
     background-color: transparent;
     background-size: contain;
-    box-shadow: inset 0 0 0 1px var(--accent-color);
+    box-shadow: inset 0 0 0 1px rgb(var(--accent-color));
 
     &:checked {
       box-shadow: none;
