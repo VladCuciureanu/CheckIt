@@ -4,20 +4,14 @@ import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useState } from "react";
 import HamburgerIcon from "@/assets/icons/Hamburger";
 import XIcon from "@/assets/icons/X";
-import {
-  SettingsAction,
-  useSettings,
-  useSettingsDispatch,
-} from "@/hooks/settings";
+import { useSettingsDispatch } from "@/hooks/settings";
 import Button from "../../Button";
 import { useTheme } from "next-themes";
 import { UITheme, getNextThemeInRotation } from "@/constants/themes";
-import {
-  TodoItemsAction,
-  useTodoItems,
-  useTodoItemsDispatch,
-} from "@/hooks/todo-items";
+import { useTodoItems, useTodoItemsDispatch } from "@/hooks/todo-items";
 import { download } from "@/utils/download";
+import { SettingsAction } from "@/types/settings";
+import { TodoItemsAction } from "@/types/todo-items";
 
 export default function HeaderMenu() {
   const [menuOpen, setMenuOpen] = useState(false);

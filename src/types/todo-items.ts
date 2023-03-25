@@ -5,3 +5,11 @@ export type TodoItemData = {
   parent?: string;
   color?: string;
 };
+
+export enum TodoItemsAction {
+  Init,
+  Create,
+  Update,
+  Delete,
+  Clear,
+}

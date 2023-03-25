@@ -1,4 +1,4 @@
-import { TodoItemData } from "@/types/todo-item";
+import { TodoItemData } from "@/types/todo-items";
 
 const DefaultTodoItems: TodoItemData[] = [
   {

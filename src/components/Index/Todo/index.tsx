@@ -1,4 +1,4 @@
-import { TodoItemData } from "@/types/todo-item";
+import { TodoItemData } from "@/types/todo-items";
 import styles from "./index.module.scss";
 import { CSSProperties } from "react";
 import { useSettings } from "@/hooks/settings";

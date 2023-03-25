@@ -1,6 +1,6 @@
 "use client";
-import { SettingsProvider } from "@/hooks/settings";
-import { TodoItemsProvider } from "@/hooks/todo-items";
+import { SettingsProvider } from "@/contexts/settings";
+import { TodoItemsProvider } from "@/contexts/todo-items";
 import { ThemeProvider } from "next-themes";
 import { ReactNode } from "react";
 

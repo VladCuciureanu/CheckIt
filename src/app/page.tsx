@@ -3,13 +3,9 @@ import InputField from "@/components/Index/Input";
 import { FormEvent, useState } from "react";
 import styles from "./page.module.scss";
 import TodoItem from "@/components/Index/Todo";
-import { TodoItemData } from "@/types/todo-item";
+import { TodoItemData, TodoItemsAction } from "@/types/todo-items";
 import KeyPressListener from "@/components/Shared/KeyPressListener";
-import {
-  TodoItemsAction,
-  useTodoItems,
-  useTodoItemsDispatch,
-} from "@/hooks/todo-items";
+import { useTodoItems, useTodoItemsDispatch } from "@/hooks/todo-items";
 import { v4 } from "uuid";
 
 export default function Home() {

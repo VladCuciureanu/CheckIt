@@ -1,10 +1,8 @@
 import { UITheme, getNextThemeInRotation } from "@/constants/themes";
-import { SettingsAction, useSettingsDispatch } from "@/hooks/settings";
-import {
-  TodoItemsAction,
-  useTodoItems,
-  useTodoItemsDispatch,
-} from "@/hooks/todo-items";
+import { useSettingsDispatch } from "@/hooks/settings";
+import { useTodoItems, useTodoItemsDispatch } from "@/hooks/todo-items";
+import { SettingsAction } from "@/types/settings";
+import { TodoItemsAction } from "@/types/todo-items";
 import { download } from "@/utils/download";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect } from "react";
