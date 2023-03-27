@@ -2,6 +2,7 @@ import { ReactNode } from "react";
 import { TodoItem, TodoItemsAction } from "@/types/todo-items";
 import { useTodoItemsDispatch } from "@/hooks/todo-items";
 import ContextMenu from "@/components/Shared/Radix/Menu/Context";
+import { HighlighterColors } from "@/constants/highlighter-colors";
 
 export default function TodoContextMenu({
   children,
@@ -36,26 +37,48 @@ export default function TodoContextMenu({
             </ContextMenu.SubTrigger>
             <ContextMenu.Portal>
               <ContextMenu.SubContent sideOffset={-2} alignOffset={-5}>
-                <ContextMenu.Item onClick={() => handleColorChange("red4")}>
-                  Red
+                <ContextMenu.Item
+                  onClick={() => handleColorChange(HighlighterColors.Red)}
+                >
+                  <ColorSwatch color={HighlighterColors.Red}>Red</ColorSwatch>
                 </ContextMenu.Item>
-                <ContextMenu.Item onClick={() => handleColorChange("orange4")}>
-                  Orange
+                <ContextMenu.Item
+                  onClick={() => handleColorChange(HighlighterColors.Orange)}
+                >
+                  <ColorSwatch color={HighlighterColors.Orange}>
+                    Orange
+                  </ColorSwatch>
                 </ContextMenu.Item>
-                <ContextMenu.Item onClick={() => handleColorChange("yellow4")}>
-                  Yellow
+                <ContextMenu.Item
+                  onClick={() => handleColorChange(HighlighterColors.Yellow)}
+                >
+                  <ColorSwatch color={HighlighterColors.Yellow}>
+                    Yellow
+                  </ColorSwatch>
                 </ContextMenu.Item>
-                <ContextMenu.Item onClick={() => handleColorChange("green4")}>
-                  Green
+                <ContextMenu.Item
+                  onClick={() => handleColorChange(HighlighterColors.Green)}
+                >
+                  <ColorSwatch color={HighlighterColors.Green}>
+                    Green
+                  </ColorSwatch>
                 </ContextMenu.Item>
-                <ContextMenu.Item onClick={() => handleColorChange("blue4")}>
-                  Blue
+                <ContextMenu.Item
+                  onClick={() => handleColorChange(HighlighterColors.Blue)}
+                >
+                  <ColorSwatch color={HighlighterColors.Blue}>Blue</ColorSwatch>
                 </ContextMenu.Item>
-                <ContextMenu.Item onClick={() => handleColorChange("purple4")}>
-                  Purple
+                <ContextMenu.Item
+                  onClick={() => handleColorChange(HighlighterColors.Purple)}
+                >
+                  <ColorSwatch color={HighlighterColors.Purple}>
+                    Purple
+                  </ColorSwatch>
                 </ContextMenu.Item>
-                <ContextMenu.Item onClick={() => handleColorChange("gray4")}>
-                  Gray
+                <ContextMenu.Item
+                  onClick={() => handleColorChange(HighlighterColors.Gray)}
+                >
+                  <ColorSwatch color={HighlighterColors.Gray}>Gray</ColorSwatch>
                 </ContextMenu.Item>
               </ContextMenu.SubContent>
             </ContextMenu.Portal>
@@ -66,5 +89,36 @@ export default function TodoContextMenu({
         </ContextMenu.Content>
       </ContextMenu.Portal>
     </ContextMenu.Root>
+  );
+}
+
+function ColorSwatch({
+  children,
+  color,
+}: {
+  children: ReactNode;
+  color: string;
+}) {
+  return (
+    <div
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        height: "100%",
+      }}
+    >
+      <div
+        style={{
+          minHeight: "50%",
+          marginRight: ".5rem",
+          aspectRatio: "1/1",
+          borderRadius: 9999,
+          backgroundColor: `rgb(var(--${color}))`,
+          border: `1px solid rgb(var(--accent-color))`,
+        }}
+      />
+      {children}
+    </div>
   );
 }

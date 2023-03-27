@@ -3,8 +3,8 @@ import styles from "./index.module.scss";
 import { CSSProperties } from "react";
 import { useSettings } from "@/hooks/settings";
 import { useTodoItems, useTodoItemsDispatch } from "@/hooks/todo-items";
-import TodoContext from "./Context";
 import TodoContextMenu from "./Context";
+import { HighlighterColors } from "@/constants/highlighter-colors";
 
 type TodoProps = {
   data: TodoItem;
@@ -25,7 +25,7 @@ export default function Todo(props: TodoProps) {
   const style = {
     "--custom-color": props.data.color
       ? `rgb(var(--${props.data.color}))`
-      : "rgb(var(--gray4))",
+      : `rgb(var(--${HighlighterColors.Gray}))`,
     filter: shouldBlur ? "blur(.1rem)" : undefined,
     opacity: shouldBlur ? 0.25 : undefined,
   } as CSSProperties;
