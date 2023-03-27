@@ -1,6 +1,4 @@
 "use client";
-import styles from "./index.module.scss";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
 import { useState } from "react";
 import HamburgerIcon from "@/assets/icons/Hamburger";
 import XIcon from "@/assets/icons/X";
@@ -13,6 +11,7 @@ import { download } from "@/utils/download";
 import { SettingsAction } from "@/types/settings";
 import { TodoItemsAction } from "@/types/todo-items";
 import { UITheme } from "@/types/themes";
+import DropdownMenu from "../../Radix/Menu/Dropdown";
 
 export default function HeaderMenu() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -36,33 +35,27 @@ export default function HeaderMenu() {
         <Button>{menuOpen ? <XIcon /> : <HamburgerIcon />}</Button>
       </DropdownMenu.Trigger>
       <DropdownMenu.Portal>
-        <DropdownMenu.Content className={styles.Container} align="end">
+        <DropdownMenu.Content align="end">
           <DropdownMenu.Item
-            className={styles.Item}
             onClick={() => {
               settingsDispatch({ type: SettingsAction.ToggleBlur });
             }}
           >
-            Toggle Blur <div className={styles.RightSlot}>⌃B</div>
+            Toggle Blur <DropdownMenu.RightSlot>⌃B</DropdownMenu.RightSlot>
           </DropdownMenu.Item>
           <DropdownMenu.Item
-            className={styles.Item}
             onClick={() => setTheme(getNextThemeInRotation(theme as UITheme))}
           >
-            Toggle Theme <div className={styles.RightSlot}>⌃T</div>
+            Toggle Theme <DropdownMenu.RightSlot>⌃T</DropdownMenu.RightSlot>
           </DropdownMenu.Item>
-          <DropdownMenu.Item
-            className={styles.Item}
-            onClick={() => exportData()}
-          >
-            Export <div className={styles.RightSlot}>⌃S</div>
+          <DropdownMenu.Item onClick={() => exportData()}>
+            Export <DropdownMenu.RightSlot>⌃S</DropdownMenu.RightSlot>
           </DropdownMenu.Item>
-          <DropdownMenu.Item
-            className={styles.DangerousItem}
+          <DropdownMenu.DangerousItem
             onClick={() => todoItemsDispatch!({ type: TodoItemsAction.Clear })}
           >
-            Clear Board <div className={styles.RightSlot}>⌃X</div>
-          </DropdownMenu.Item>
+            Clear Board <DropdownMenu.RightSlot>⌃X</DropdownMenu.RightSlot>
+          </DropdownMenu.DangerousItem>
         </DropdownMenu.Content>
       </DropdownMenu.Portal>
     </DropdownMenu.Root>
