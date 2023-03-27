@@ -1,4 +1,4 @@
-import { Settings } from "@/hooks/settings";
+import { Settings } from "@/types/settings";
 
 const DefaultSettings: Settings = {
   blurred: false,
