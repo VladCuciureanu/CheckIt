@@ -1,26 +1,40 @@
-import { red, green, blue, yellow, gray } from "@radix-ui/colors";
+import {
+  red,
+  orange,
+  yellow,
+  green,
+  blue,
+  purple,
+  gray,
+} from "@radix-ui/colors";
 import {
   redDark,
+  orangeDark,
+  yellowDark,
   greenDark,
   blueDark,
-  yellowDark,
+  purpleDark,
   grayDark,
 } from "@radix-ui/colors";
 import { writeFileSync } from "fs";
 
 const lightColors: { [key: string]: RGB } = {
   ...radixColorToColor(red),
+  ...radixColorToColor(orange),
+  ...radixColorToColor(yellow),
   ...radixColorToColor(green),
   ...radixColorToColor(blue),
-  ...radixColorToColor(yellow),
+  ...radixColorToColor(purple),
   ...radixColorToColor(gray),
 };
 
 const darkColors: { [key: string]: RGB } = {
   ...radixColorToColor(redDark),
+  ...radixColorToColor(orangeDark),
+  ...radixColorToColor(yellowDark),
   ...radixColorToColor(greenDark),
   ...radixColorToColor(blueDark),
-  ...radixColorToColor(yellowDark),
+  ...radixColorToColor(purpleDark),
   ...radixColorToColor(grayDark),
 };
 

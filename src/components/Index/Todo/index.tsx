@@ -3,6 +3,8 @@ import styles from "./index.module.scss";
 import { CSSProperties } from "react";
 import { useSettings } from "@/hooks/settings";
 import { useTodoItems, useTodoItemsDispatch } from "@/hooks/todo-items";
+import TodoContext from "./Context";
+import TodoContextMenu from "./Context";
 
 type TodoProps = {
   data: TodoItem;
@@ -19,8 +21,11 @@ export default function Todo(props: TodoProps) {
 
   const shouldBlur =
     props.overrideBlur || (settings?.blurred && props.data.checked);
+
   const style = {
-    "--custom-color": props.data.color ?? "rgb(var(--accent-color))",
+    "--custom-color": props.data.color
+      ? `rgb(var(--${props.data.color}))`
+      : "rgb(var(--gray4))",
     filter: shouldBlur ? "blur(.1rem)" : undefined,
     opacity: shouldBlur ? 0.25 : undefined,
   } as CSSProperties;
@@ -34,15 +39,21 @@ export default function Todo(props: TodoProps) {
 
   return (
     <>
-      <div className={styles.Container} style={style}>
-        <input
-          className={styles.Checkbox}
-          checked={props.data.checked}
-          type={"checkbox"}
-          onChange={handleChange}
-        />
-        {props.data.content}
-      </div>
+      <TodoContextMenu data={props.data}>
+        <div
+          className={styles.Container}
+          style={style}
+          onMouseDown={(event) => console.log(event)}
+        >
+          <input
+            className={styles.Checkbox}
+            checked={props.data.checked}
+            type={"checkbox"}
+            onChange={handleChange}
+          />
+          {props.data.content}
+        </div>
+      </TodoContextMenu>
       {childNodes?.length > 0 && (
         <div className={styles.ChildrenContainer}>
           {childNodes.map((item) => (
