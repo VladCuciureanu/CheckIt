@@ -5,7 +5,6 @@ import HeaderLogo from "@/components/Shared/Header/Logo";
 import HeaderMenu from "@/components/Shared/Header/Menu";
 import styles from "./layout.module.scss";
 import Providers from "@/components/Shared/Providers";
-import Script from "next/script";
 
 export const metadata = {
   title: "CheckIt",

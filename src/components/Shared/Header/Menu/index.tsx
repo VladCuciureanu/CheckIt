@@ -12,8 +12,10 @@ import { SettingsAction } from "@/types/settings";
 import { TodoItemsAction } from "@/types/todo-items";
 import { UITheme } from "@/types/themes";
 import DropdownMenu from "../../Radix/Menu/Dropdown";
+import ClearAlert from "../../Dialogs/ClearAlert";
 
 export default function HeaderMenu() {
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const { theme, setTheme } = useTheme();
   const todoItems = useTodoItems();
@@ -30,34 +32,41 @@ export default function HeaderMenu() {
   };
 
   return (
-    <DropdownMenu.Root onOpenChange={(value) => setMenuOpen(value)}>
-      <DropdownMenu.Trigger asChild>
-        <Button>{menuOpen ? <XIcon /> : <HamburgerIcon />}</Button>
-      </DropdownMenu.Trigger>
-      <DropdownMenu.Portal>
-        <DropdownMenu.Content align="end">
-          <DropdownMenu.Item
-            onClick={() => {
-              settingsDispatch({ type: SettingsAction.ToggleBlur });
-            }}
-          >
-            Toggle Blur <DropdownMenu.RightSlot>⌃B</DropdownMenu.RightSlot>
-          </DropdownMenu.Item>
-          <DropdownMenu.Item
-            onClick={() => setTheme(getNextThemeInRotation(theme as UITheme))}
-          >
-            Toggle Theme <DropdownMenu.RightSlot>⌃T</DropdownMenu.RightSlot>
-          </DropdownMenu.Item>
-          <DropdownMenu.Item onClick={() => exportData()}>
-            Export <DropdownMenu.RightSlot>⌃S</DropdownMenu.RightSlot>
-          </DropdownMenu.Item>
-          <DropdownMenu.DangerousItem
-            onClick={() => todoItemsDispatch!({ type: TodoItemsAction.Clear })}
-          >
-            Clear Board <DropdownMenu.RightSlot>⌃X</DropdownMenu.RightSlot>
-          </DropdownMenu.DangerousItem>
-        </DropdownMenu.Content>
-      </DropdownMenu.Portal>
-    </DropdownMenu.Root>
+    <>
+      <DropdownMenu.Root onOpenChange={(value) => setMenuOpen(value)}>
+        <DropdownMenu.Trigger asChild>
+          <Button>{menuOpen ? <XIcon /> : <HamburgerIcon />}</Button>
+        </DropdownMenu.Trigger>
+        <DropdownMenu.Portal>
+          <DropdownMenu.Content align="end">
+            <DropdownMenu.Item
+              onClick={() => {
+                settingsDispatch({ type: SettingsAction.ToggleBlur });
+              }}
+            >
+              Toggle Blur <DropdownMenu.RightSlot>⌃B</DropdownMenu.RightSlot>
+            </DropdownMenu.Item>
+            <DropdownMenu.Item
+              onClick={() => setTheme(getNextThemeInRotation(theme as UITheme))}
+            >
+              Toggle Theme <DropdownMenu.RightSlot>⌃T</DropdownMenu.RightSlot>
+            </DropdownMenu.Item>
+            <DropdownMenu.Item onClick={() => exportData()}>
+              Export <DropdownMenu.RightSlot>⌃S</DropdownMenu.RightSlot>
+            </DropdownMenu.Item>
+            <DropdownMenu.DangerousItem
+              onClick={() => setDeleteDialogOpen(true)}
+            >
+              Clear Board <DropdownMenu.RightSlot>⌃X</DropdownMenu.RightSlot>
+            </DropdownMenu.DangerousItem>
+          </DropdownMenu.Content>
+        </DropdownMenu.Portal>
+      </DropdownMenu.Root>
+      <ClearAlert
+        open={deleteDialogOpen}
+        onClose={() => setDeleteDialogOpen(false)}
+        onAccept={() => todoItemsDispatch!({ type: TodoItemsAction.Clear })}
+      />
+    </>
   );
 }

@@ -6,13 +6,17 @@ import { UITheme } from "@/types/themes";
 import { TodoItemsAction } from "@/types/todo-items";
 import { download } from "@/utils/download";
 import { useTheme } from "next-themes";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useState } from "react";
+import ClearAlert from "../Dialogs/ClearAlert";
 
 export default function KeyPressListener() {
-  const settingsDispatch = useSettingsDispatch();
-  const todoItemsDispatch = useTodoItemsDispatch();
   const { theme, setTheme } = useTheme();
+  const settingsDispatch = useSettingsDispatch();
+
   const todoItems = useTodoItems();
+  const todoItemsDispatch = useTodoItemsDispatch();
+
+  const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);
 
   const handleKeyPress = useCallback(
     (event: KeyboardEvent) => {
@@ -28,12 +32,12 @@ export default function KeyPressListener() {
             download("check-it-data.txt", JSON.stringify(todoItems));
             break;
           case "x":
-            todoItemsDispatch!({ type: TodoItemsAction.Clear });
+            setDeleteDialogOpen(true);
             break;
         }
       }
     },
-    [setTheme, settingsDispatch, theme, todoItems, todoItemsDispatch]
+    [setTheme, settingsDispatch, theme, todoItems]
   );
 
   useEffect(() => {
@@ -44,5 +48,11 @@ export default function KeyPressListener() {
     };
   }, [handleKeyPress]);
 
-  return <></>;
+  return (
+    <ClearAlert
+      open={deleteDialogOpen}
+      onClose={() => setDeleteDialogOpen(false)}
+      onAccept={() => todoItemsDispatch!({ type: TodoItemsAction.Clear })}
+    />
+  );
 }
