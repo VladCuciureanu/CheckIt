@@ -8,4 +8,10 @@
   margin-left: auto;
   margin-right: auto;
   z-index: 10;
+  transition: max-width 0.5s, margin 0.5s;
+
+  @media only screen and (max-width: 436px) {
+    max-width: min(var(--main-column-width), calc(100vw - 2rem));
+    margin-top: 1.5rem;
+  }
 }

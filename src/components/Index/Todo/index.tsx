@@ -51,7 +51,7 @@ export default function Todo(props: TodoProps) {
             type={"checkbox"}
             onChange={handleChange}
           />
-          {props.data.content}
+          <p className={styles.Label}>{props.data.content}</p>
         </div>
       </TodoContextMenu>
       {childNodes?.length > 0 && (

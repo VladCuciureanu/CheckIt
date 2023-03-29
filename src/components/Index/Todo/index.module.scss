@@ -11,6 +11,10 @@
   transition: filter, opacity 0.5s;
 }
 
+.Label {
+  overflow: auto;
+}
+
 .ChildrenContainer {
   margin-left: 1.5rem;
 }
