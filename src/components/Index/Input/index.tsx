@@ -1,5 +1,5 @@
 "use client";
-import { ComponentProps, FormEventHandler, useState } from "react";
+import { ComponentProps, FormEventHandler, useEffect, useState } from "react";
 import styles from "./index.module.scss";
 import Button from "@/components/Shared/Button";
 import PlusCircleIcon from "@/assets/icons/PlusCircle";
@@ -13,10 +13,21 @@ type InputFieldProps = Omit<ComponentProps<"input">, "onSubmit"> & {
 export default function InputField(props: InputFieldProps) {
   const { onSubmit, isEmpty, ...fieldProps } = props;
   const [focused, setFocused] = useState(false);
+  const [clickThrough, setClickThrough] = useState(true);
   const settings = useSettings();
 
   const showButton = focused && !isEmpty;
   const shouldBlur = !focused && isEmpty && settings?.blurred;
+
+  useEffect(() => {
+    if (showButton) {
+      setClickThrough(false);
+    } else {
+      setTimeout(() => {
+        setClickThrough(true);
+      }, 500);
+    }
+  }, [showButton]);
 
   return (
     <form
@@ -35,6 +46,7 @@ export default function InputField(props: InputFieldProps) {
       <Button
         tabIndex={showButton ? undefined : -1}
         className={showButton ? styles.Button : styles.InvisibleButton}
+        style={clickThrough ? { pointerEvents: "none" } : undefined}
       >
         <PlusCircleIcon />
       </Button>

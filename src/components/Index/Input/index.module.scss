@@ -41,11 +41,10 @@
   width: 2.5rem;
   transition-property: opacity;
   transition-duration: 0.5s;
-  transition-delay: 0.25s;
+  transition-delay: 0.5s;
   transition-timing-function: linear;
 }
 
 .InvisibleButton {
   opacity: 0;
-  pointer-events: none;
 }
