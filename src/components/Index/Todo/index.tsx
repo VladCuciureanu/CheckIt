@@ -50,11 +50,7 @@ export default function Todo(props: TodoProps) {
   return (
     <>
       <TodoContextMenu data={props.data}>
-        <div
-          className={styles.Container}
-          style={style}
-          onMouseDown={(event) => console.log(event)}
-        >
+        <div className={styles.Container} style={style}>
           <input
             className={styles.Checkbox}
             checked={props.data.checked}
