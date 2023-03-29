@@ -1,11 +1,18 @@
 .Logo {
   height: 2.5rem;
   width: 2.5rem;
-  background-color: red;
 }
 
 .Link {
+  color: rgb(var(--foreground-color));
+  opacity: 0.35;
   text-decoration: none;
+  transition: opacity 0.15s;
+
+  &:hover {
+    opacity: 1;
+  }
+
   &:focus-visible {
     outline: none;
   }
