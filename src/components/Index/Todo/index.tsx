@@ -1,10 +1,11 @@
 import { TodoItem, TodoItemsAction } from "@/types/todo-items";
 import styles from "./index.module.scss";
-import { CSSProperties } from "react";
+import { CSSProperties, useEffect, useState } from "react";
 import { useSettings } from "@/hooks/settings";
 import { useTodoItems, useTodoItemsDispatch } from "@/hooks/todo-items";
 import TodoContextMenu from "./Context";
 import { HighlighterColors } from "@/constants/highlighter-colors";
+import TodoInput from "./Input";
 
 type TodoProps = {
   data: TodoItem;
@@ -12,6 +13,7 @@ type TodoProps = {
 };
 
 export default function Todo(props: TodoProps) {
+  const [content, setContent] = useState(props.data.content);
   const settings = useSettings();
   const todoItems = useTodoItems();
   const todoItemsDispatcher = useTodoItemsDispatch();
@@ -30,12 +32,20 @@ export default function Todo(props: TodoProps) {
     opacity: shouldBlur ? 0.25 : undefined,
   } as CSSProperties;
 
-  const handleChange = () => {
+  const handleCheck = () => {
     todoItemsDispatcher!({
       type: TodoItemsAction.Update,
       payload: { ...props.data, checked: !props.data.checked },
     });
   };
+
+  useEffect(() => {
+    todoItemsDispatcher!({
+      type: TodoItemsAction.Update,
+      payload: { ...props.data, content },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [content, todoItemsDispatcher]);
 
   return (
     <>
@@ -49,9 +59,9 @@ export default function Todo(props: TodoProps) {
             className={styles.Checkbox}
             checked={props.data.checked}
             type={"checkbox"}
-            onChange={handleChange}
+            onChange={handleCheck}
           />
-          <p className={styles.Label}>{props.data.content}</p>
+          <TodoInput value={content} onChange={setContent} />
         </div>
       </TodoContextMenu>
       {childNodes?.length > 0 && (

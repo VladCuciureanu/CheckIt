@@ -1,0 +1,7 @@
+.Label {
+  text-overflow: ellipsis;
+
+  &:focus-visible {
+    outline: 0;
+  }
+}
