@@ -36,7 +36,16 @@
   transition: filter 1s;
 }
 
-.Button {
+.Button,
+.InvisibleButton {
   width: 2.5rem;
-  transition: all 1s !important;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  transition-delay: 0.25s;
+  transition-timing-function: linear;
+}
+
+.InvisibleButton {
+  opacity: 0;
+  pointer-events: none;
 }

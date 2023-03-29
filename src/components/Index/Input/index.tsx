@@ -34,16 +34,7 @@ export default function InputField(props: InputFieldProps) {
       />
       <Button
         tabIndex={showButton ? undefined : -1}
-        className={styles.Button}
-        style={
-          showButton
-            ? undefined
-            : {
-                transform: "translateX(125%)",
-                opacity: 0,
-                pointerEvents: "none",
-              }
-        }
+        className={showButton ? styles.Button : styles.InvisibleButton}
       >
         <PlusCircleIcon />
       </Button>
