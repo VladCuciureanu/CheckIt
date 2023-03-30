@@ -7,7 +7,7 @@ import { TodoItemsAction } from "@/types/todo-items";
 import { download } from "@/utils/download";
 import { useTheme } from "next-themes";
 import { useCallback, useEffect, useState } from "react";
-import ClearAlert from "../Dialogs/ClearAlert";
+import ClearAlert from "../Radix/Dialogs/ClearAlert";
 
 export default function KeyPressListener() {
   const { theme, setTheme } = useTheme();

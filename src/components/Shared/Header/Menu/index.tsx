@@ -12,7 +12,7 @@ import { SettingsAction } from "@/types/settings";
 import { TodoItemsAction } from "@/types/todo-items";
 import { UITheme } from "@/types/themes";
 import DropdownMenu from "../../Radix/Menu/Dropdown";
-import ClearAlert from "../../Dialogs/ClearAlert";
+import ClearAlert from "../../Radix/Dialogs/ClearAlert";
 
 export default function HeaderMenu() {
   const [deleteDialogOpen, setDeleteDialogOpen] = useState(false);

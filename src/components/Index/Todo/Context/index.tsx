@@ -3,7 +3,7 @@ import { TodoItem, TodoItemsAction } from "@/types/todo-items";
 import { useTodoItemsDispatch } from "@/hooks/todo-items";
 import ContextMenu from "@/components/Shared/Radix/Menu/Context";
 import { HighlighterColors } from "@/constants/highlighter-colors";
-import DeleteAlert from "@/components/Shared/Dialogs/DeleteAlert";
+import DeleteAlert from "@/components/Shared/Radix/Dialogs/DeleteAlert";
 
 export default function TodoContextMenu({
   children,
