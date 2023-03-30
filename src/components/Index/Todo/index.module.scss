@@ -6,9 +6,27 @@
   padding: 0.5rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
-  margin-bottom: 0.25rem;
   align-items: center;
   transition: filter, opacity 0.5s;
+}
+
+.DropzonesContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  & * {
+    --hover-size: 100%;
+  }
+
+  & :first-child {
+    --hover-right-margin-factor: 1;
+  }
+
+  & :nth-child(2) {
+    --hover-left-margin-factor: 0.25;
+    --hover-size: calc(100% - 1.5rem);
+  }
 }
 
 .ChildrenContainer {

@@ -1,0 +1,19 @@
+.Indicator,
+.HoveredIndicator {
+  height: 0.5rem;
+  width: 25%;
+  border: 0.15rem dashed rgba(var(--foreground-color), 0.35);
+  border-radius: var(--ui-radius);
+  opacity: 0;
+  transition: height 0.25s, width 0.5s, margin 0.5s, opacity 0.5s;
+}
+
+.HoveredIndicator {
+  height: 3.5rem;
+  width: min(100%, var(--hover-size));
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  margin-left: calc(var(--hover-left-margin-factor) * -100%);
+  margin-right: calc(var(--hover-right-margin-factor) * -100%);
+  opacity: 1;
+}

@@ -12,4 +12,5 @@ export enum TodoItemsAction {
   Update,
   Delete,
   Clear,
+  Reorder,
 }

@@ -1,12 +1,13 @@
 "use client";
 import InputField from "@/components/Index/Input";
-import { FormEvent, useState } from "react";
+import { FormEvent, Fragment, useState } from "react";
 import styles from "./page.module.scss";
 import Todo from "@/components/Index/Todo";
 import { TodoItem, TodoItemsAction } from "@/types/todo-items";
 import KeyPressListener from "@/components/Shared/KeyPressListener";
 import { useTodoItems, useTodoItemsDispatch } from "@/hooks/todo-items";
 import { v4 } from "uuid";
+import TodoDropzone from "@/components/Index/Todo/Dropzone";
 
 export default function Home() {
   const [input, setInput] = useState<string>("");
@@ -38,8 +39,11 @@ export default function Home() {
       />
       {todoItems
         .filter((item) => item.parent === undefined)
-        .map((item) => (
-          <Todo key={item.id} data={item} />
+        .map((item, index) => (
+          <Fragment key={item.id}>
+            {index === 0 && <TodoDropzone aboveId={item.id} />}
+            <Todo key={item.id} data={item} />
+          </Fragment>
         ))}
       <KeyPressListener />
     </main>
