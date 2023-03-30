@@ -74,10 +74,15 @@ export default function Todo(props: TodoProps) {
         </div>
       </TodoContextMenu>
       <div className={styles.DropzonesContainer}>
-        <TodoDropzone
-          key={`${props.data.id}-dz-main`}
-          underId={props.data.id}
-        />
+        {childNodes.length < 1 ? (
+          <TodoDropzone
+            key={`${props.data.id}-dz-main`}
+            underId={props.data.id}
+          />
+        ) : (
+          <div />
+        )}
+
         <TodoDropzone
           key={`${props.data.id}-dz-secondary`}
           parentId={props.data.id}

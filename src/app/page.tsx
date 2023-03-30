@@ -41,7 +41,11 @@ export default function Home() {
         .filter((item) => item.parent === undefined)
         .map((item, index) => (
           <Fragment key={item.id}>
-            {index === 0 && <TodoDropzone aboveId={item.id} />}
+            {index === 0 && (
+              <div>
+                <TodoDropzone aboveId={item.id} />
+              </div>
+            )}
             <Todo key={item.id} data={item} />
           </Fragment>
         ))}

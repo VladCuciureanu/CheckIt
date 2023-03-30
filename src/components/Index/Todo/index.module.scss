@@ -16,16 +16,11 @@
   justify-content: space-between;
 
   & * {
-    --hover-size: 100%;
+    width: 50%;
   }
 
   & :first-child {
-    --hover-right-margin-factor: 1;
-  }
-
-  & :nth-child(2) {
-    --hover-left-margin-factor: 0.25;
-    --hover-size: calc(100% - 1.5rem);
+    flex-shrink: 16;
   }
 }
 
