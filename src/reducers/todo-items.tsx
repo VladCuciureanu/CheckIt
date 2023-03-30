@@ -35,6 +35,10 @@ export default function TodoItemsReducer(
     case TodoItemsAction.Reorder: {
       const { id, parentId, underId, aboveId } = action.payload;
 
+      if ([parentId, underId, aboveId].includes(id)) {
+        return todoItems;
+      }
+
       let item = todoItems.find((it) => it.id === id);
       if (item === undefined) {
         throw "Could not find reordered item.";
