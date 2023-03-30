@@ -35,22 +35,45 @@ export default function TodoItemsReducer(
     case TodoItemsAction.Reorder: {
       const { id, parentId, underId, aboveId } = action.payload;
 
+      // If pivot item is the item itself, cancel action.
       if ([parentId, underId, aboveId].includes(id)) {
         return todoItems;
       }
 
+      // If hierarchy of any parameter items contains the item itself, cancel action.
+      var hierarchyIds: string[] = [];
+      const paramIds = [parentId, underId, aboveId];
+      paramIds.forEach((itId) => {
+        var currentId = itId;
+        while (currentId !== undefined) {
+          hierarchyIds.push(currentId);
+          const currentItem = todoItems.find((it) => it.id === currentId);
+          if (currentItem === undefined) {
+            throw "An error occured.";
+          }
+          currentId = currentItem.parent;
+        }
+      });
+      if (hierarchyIds.includes(id)) {
+        return todoItems;
+      }
+
+      // Try to find reordered item
       let item = todoItems.find((it) => it.id === id);
       if (item === undefined) {
         throw "Could not find reordered item.";
       }
 
+      // Filter other items
       let filteredItems = todoItems.filter((it) => it.id !== item?.id);
 
+      // Reparenting
       if (parentId) {
         item.parent = parentId;
         return [item, ...filteredItems];
       }
 
+      // Reordering
       if (underId || aboveId) {
         const pivotItemId = underId || aboveId;
         if (pivotItemId === item.id) {
