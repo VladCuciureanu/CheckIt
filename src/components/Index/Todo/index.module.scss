@@ -50,10 +50,13 @@
 
   &::before {
     content: "";
+    position: relative;
     color: transparent;
     display: block;
     width: inherit;
     height: inherit;
+    top: -1px;
+    left: -1px;
     border-radius: inherit;
     border: 0;
     background-color: transparent;
