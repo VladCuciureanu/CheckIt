@@ -1,38 +1,24 @@
-# CheckIt
+<div align="center">
+  <div>&nbsp;</div>
+  <img src="public/graphics/check-it-logo.png" width="400"/> 
+</div>
 
-[![twitter handle][]][twitter badge]
+## Introduction
 
-<img align="right" src="public/graphics/logo.svg" height="150px" alt="A square with rounded corners filled with wavy lines surrounded by a detached border">
+CheckIt is a _minimalist_, _modern_ and _secure_ checklist app created for quickly writing down
+action points. Secure by nature (as no file, network, or environment access is needed).
 
-**CheckIt** is a _minimalist_, _modern_ and _secure_ checklist app created for quickly writing down
-action points. This project was built using **Next.JS** and is deployed on **Vercel**.
+## Motivation
 
-### Features
+Motivated by the necessity to familiarize myself with react-dnd for a job opportunity, CheckIt was born, aiming to provide a practical project for honing my skills while also serving as a useful tool for managing tasks efficiently.
 
-- Secure by default. No file, network, or environment access needed.
+## Getting Started
 
-### Install Dependencies
-
-Shell (Mac, Linux):
-
-```sh
-pnpm i
-```
-
-### Running The Code
-
-Starting **CheckIt** is as simple as running the following command:
+Starting CheckIt is as simple as running the following command:
 
 ```sh
-pnpm build && pnpm start
+npm i && npm run dev
 ```
 
-### Contributing
-
-We appreciate your help!
-
-To contribute, please read our
-[contributing instructions](https://github.com/VladCuciureanu/CheckIt/blob/main/CONTRIBUTING.md).
-
-[twitter handle]: https://img.shields.io/twitter/follow/VladCuciureanu_.svg?style=social&label=Follow
-[twitter badge]: https://twitter.com/intent/follow?screen_name=VladCuciureanu_
+## License
+CheckIt is distributed under the terms of the MIT License. Free for both commercial and research use.
