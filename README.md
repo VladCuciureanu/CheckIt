@@ -1,11 +1,6 @@
-<div align="center">
-  <div>&nbsp;</div>
-  <img src="public/graphics/check-it-logo.png" width="400"/> 
-</div>
+# ☑️ CheckIt
 
-## Introduction
-
-CheckIt is a _minimalist_, _modern_ and _secure_ checklist app created for quickly writing down
+_Minimalist_, _modern_ and _secure_ checklist app created for quickly writing down
 action points. Secure by nature (as no file, network, or environment access is needed).
 
 ## Motivation
